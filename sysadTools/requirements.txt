@@ -1,0 +1,11 @@
+altgraph==0.17
+packaging==20.1
+PyInstaller==3.6
+pyparsing==2.4.6
+PyQt-builder==1.2.0
+PyQt5==5.14.1
+PyQt5-sip==12.7.1
+PyQtChart==5.14.0
+sip==5.1.1
+six==1.14.0
+toml==0.10.0
