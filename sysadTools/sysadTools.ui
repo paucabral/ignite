@@ -1448,16 +1448,18 @@ color: rgb(255, 255, 255);
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgb(8, 5, 13)</string>
+      <string notr="true">background-color: rgb(8, 5, 13);
+font: 75 10pt &quot;DejaVu Sans&quot;;
+color: rgb(211, 215, 207);</string>
      </property>
     </widget>
    </widget>
    <zorder>netconfigFrame</zorder>
    <zorder>processesFrame</zorder>
-   <zorder>sidebar</zorder>
-   <zorder>useraccountsFrame</zorder>
    <zorder>sysinfoFrame</zorder>
+   <zorder>useraccountsFrame</zorder>
    <zorder>dashboardFrame</zorder>
+   <zorder>sidebar</zorder>
    <zorder>header</zorder>
   </widget>
  </widget>
