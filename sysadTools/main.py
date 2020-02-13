@@ -8,6 +8,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+import sys
+import subprocess
+import os
+import csv
 
 
 class Ui_MainWindow(object):
@@ -715,13 +719,27 @@ class Ui_MainWindow(object):
         self.defaultgatewayLabel.setText(_translate("MainWindow", "Default Gateway:"))
         self.staticipRadioButton.setText(_translate("MainWindow", "Static IP Configuration"))
         self.setdhcpButton.setText(_translate("MainWindow", "Save Configuration"))
+        self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
+        self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
 
     #connections
+        #start sidebar buttons
         self.accountconfigButton.clicked.connect(self.showAccounts)
         self.dashboardButton.clicked.connect(self.showDashboard)
         self.netconfigButton.clicked.connect(self.showNetwork)
         self.processesButton.clicked.connect(self.showProcesses)
         self.sysinfoButton.clicked.connect(self.showSysinfo)
+        #end sidebar buttons
+
+        #start processes buttons
+        self.refreshprocessButton.clicked.connect(self.processes)
+        self.killbypidButton.clicked.connect(self.killByPID)
+        self.killbynameButton.clicked.connect(self.killByName)
+        #end processes buttons
+
+        #start accounts button
+        self.accountsButton.clicked.connect(self.exportAccounts)
+        #end accounts button
 
     #start sidebar button clicks
     def showAccounts(self):
@@ -760,11 +778,67 @@ class Ui_MainWindow(object):
         self.dashboardFrame.hide()
     #end sidebar button clicks
 
+    #start processes button clicks
+    def processes(self):
+        self.cmd = "./scripts/processes/ps.sh"
+        subprocess.call(self.cmd, shell=True)
+
+        csvfile = "ps.txt"
+
+        with open(csvfile, 'rt') as csvfile:
+            next(csvfile) #ignore header row
+            reader = csv.reader(csvfile, delimiter=',')
+            self.processTable.setRowCount(0)
+            for row in reader:
+                print(row)
+                rowPosition = self.processTable.rowCount()
+                self.processTable.insertRow(rowPosition)
+
+                for i in range(len(row)):
+                    self.processTable.setItem(rowPosition, i, QtWidgets.QTableWidgetItem(row[i]))
+        self.processTable.show()
+        self.processTable.verticalHeader().hide()
+
+    def killByPID(self):
+        pid = str(self.killbypidLine.text())
+        print(pid)
+        self.cmd = "kill -9 {}".format(pid)
+        subprocess.call(self.cmd, shell=True)
+        self.killbypidLine.setText("")
+    
+    def killByName(self):
+        psname = str(self.killbynameLine.text())
+        self.cmd = "killall {}".format(psname)
+        subprocess.call(self.cmd, shell=True)
+        self.killbynameLine.setText("")
+    #end processes button clicks
+
+    #start accounts button click
+    def exportAccounts(self):
+        self.cmd = "./scripts/useraccounts/user_pass.sh"
+        subprocess.call(self.cmd, shell=True)
+
+        csvfile = "user_pass.txt"
+
+        with open(csvfile, 'rt') as csvfile:
+            reader = csv.reader(csvfile, delimiter=':')
+            self.accountsTable.setRowCount(0)
+            for row in reader:
+                print(row)
+                rowPosition = self.accountsTable.rowCount()
+                self.accountsTable.insertRow(rowPosition)
+
+                for i in range(len(row)):
+                    self.accountsTable.setItem(rowPosition, i, QtWidgets.QTableWidgetItem(row[i]))
+        self.accountsTable.show()
+    #end accounts button click
+
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
+    ui.processes()
     MainWindow.show()
     sys.exit(app.exec_())

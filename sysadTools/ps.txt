@@ -1,0 +1,187 @@
+USER    ,    PID,   PPID,    ELAPSED,%CPU,COMMAND                    ,COMMAND
+root    ,      1,      0, 1-06:22:23, 0.0,/sbin/init splash noautomou,systemd
+root    ,      2,      0, 1-06:22:23, 0.0,[kthreadd]                 ,kthreadd
+root    ,      3,      2, 1-06:22:23, 0.0,[rcu_gp]                   ,rcu_gp
+root    ,      4,      2, 1-06:22:23, 0.0,[rcu_par_gp]               ,rcu_par_gp
+root    ,      6,      2, 1-06:22:23, 0.0,[kworker/0:0H-events_highpr,kworker/0:0H-events_highpri
+root    ,      9,      2, 1-06:22:23, 0.0,[mm_percpu_wq]             ,mm_percpu_wq
+root    ,     10,      2, 1-06:22:23, 0.0,[ksoftirqd/0]              ,ksoftirqd/0
+root    ,     11,      2, 1-06:22:23, 0.0,[rcu_sched]                ,rcu_sched
+root    ,     12,      2, 1-06:22:23, 0.0,[migration/0]              ,migration/0
+root    ,     13,      2, 1-06:22:23, 0.0,[cpuhp/0]                  ,cpuhp/0
+root    ,     14,      2, 1-06:22:23, 0.0,[cpuhp/1]                  ,cpuhp/1
+root    ,     15,      2, 1-06:22:23, 0.0,[migration/1]              ,migration/1
+root    ,     16,      2, 1-06:22:23, 0.0,[ksoftirqd/1]              ,ksoftirqd/1
+root    ,     18,      2, 1-06:22:23, 0.0,[kworker/1:0H-events_highpr,kworker/1:0H-events_highpri
+root    ,     19,      2, 1-06:22:23, 0.0,[kdevtmpfs]                ,kdevtmpfs
+root    ,     20,      2, 1-06:22:23, 0.0,[netns]                    ,netns
+root    ,     21,      2, 1-06:22:23, 0.0,[kauditd]                  ,kauditd
+root    ,     22,      2, 1-06:22:23, 0.0,[khungtaskd]               ,khungtaskd
+root    ,     23,      2, 1-06:22:23, 0.0,[oom_reaper]               ,oom_reaper
+root    ,     24,      2, 1-06:22:23, 0.0,[writeback]                ,writeback
+root    ,     25,      2, 1-06:22:23, 0.0,[kcompactd0]               ,kcompactd0
+root    ,     26,      2, 1-06:22:23, 0.0,[ksmd]                     ,ksmd
+root    ,     27,      2, 1-06:22:23, 0.0,[khugepaged]               ,khugepaged
+root    ,     72,      2, 1-06:22:23, 0.0,[kintegrityd]              ,kintegrityd
+root    ,     73,      2, 1-06:22:23, 0.0,[kblockd]                  ,kblockd
+root    ,     74,      2, 1-06:22:23, 0.0,[blkcg_punt_bio]           ,blkcg_punt_bio
+root    ,     75,      2, 1-06:22:23, 0.0,[edac-poller]              ,edac-poller
+root    ,     76,      2, 1-06:22:23, 0.0,[devfreq_wq]               ,devfreq_wq
+root    ,     77,      2, 1-06:22:21, 0.0,[kswapd0]                  ,kswapd0
+root    ,     78,      2, 1-06:22:21, 0.0,[kthrotld]                 ,kthrotld
+root    ,     79,      2, 1-06:22:21, 0.0,[acpi_thermal_pm]          ,acpi_thermal_pm
+root    ,     81,      2, 1-06:22:21, 0.0,[ipv6_addrconf]            ,ipv6_addrconf
+root    ,     92,      2, 1-06:22:21, 0.0,[kstrp]                    ,kstrp
+root    ,    145,      2, 1-06:22:21, 0.0,[cryptd]                   ,cryptd
+root    ,    148,      2, 1-06:22:21, 0.0,[ata_sff]                  ,ata_sff
+root    ,    149,      2, 1-06:22:21, 0.0,[scsi_eh_0]                ,scsi_eh_0
+root    ,    151,      2, 1-06:22:21, 0.0,[scsi_tmf_0]               ,scsi_tmf_0
+root    ,    153,      2, 1-06:22:21, 0.0,[scsi_eh_1]                ,scsi_eh_1
+root    ,    156,      2, 1-06:22:21, 0.0,[scsi_tmf_1]               ,scsi_tmf_1
+root    ,    172,      2, 1-06:22:21, 0.0,[kworker/1:1H-kblockd]     ,kworker/1:1H-kblockd
+root    ,    176,      2, 1-06:22:20, 0.0,[kworker/0:1H-kblockd]     ,kworker/0:1H-kblockd
+root    ,    188,      2, 1-06:22:18, 0.0,[xfsalloc]                 ,xfsalloc
+root    ,    189,      2, 1-06:22:18, 0.0,[xfs_mru_cache]            ,xfs_mru_cache
+root    ,    192,      2, 1-06:22:18, 0.0,[md]                       ,md
+root    ,    201,      2, 1-06:22:18, 0.0,[raid5wq]                  ,raid5wq
+root    ,    239,      2, 1-06:22:08, 0.0,[jbd2/sda4-8]              ,jbd2/sda4-8
+root    ,    240,      2, 1-06:22:08, 0.0,[ext4-rsv-conver]          ,ext4-rsv-conver
+root    ,    303,      1, 1-06:22:01, 0.0,/lib/systemd/systemd-journa,systemd-journal
+root    ,    323,      1, 1-06:21:59, 0.0,/lib/systemd/systemd-udevd ,systemd-udevd
+root    ,    362,      2, 1-06:21:57, 0.0,[kmemstick]                ,kmemstick
+root    ,    363,      2, 1-06:21:57, 0.0,[watchdogd]                ,watchdogd
+root    ,    371,      2, 1-06:21:57, 0.0,[cfg80211]                 ,cfg80211
+root    ,    620,      1, 1-06:21:48, 0.0,/usr/sbin/haveged --Foregro,haveged
+root    ,    623,      1, 1-06:21:48, 0.0,/usr/sbin/ModemManager --fi,ModemManager
+root    ,    625,      1, 1-06:21:48, 0.0,/usr/lib/accountsservice/ac,accounts-daemon
+root    ,    629,      1, 1-06:21:48, 0.0,/usr/lib/bluetooth/bluetoot,bluetoothd
+root    ,    630,      1, 1-06:21:48, 0.0,/usr/sbin/cron -f          ,cron
+message+,    631,      1, 1-06:21:48, 0.0,/usr/bin/dbus-daemon --syst,dbus-daemon
+root    ,    632,      1, 1-06:21:48, 0.0,/usr/sbin/NetworkManager --,NetworkManager
+root    ,    635,      1, 1-06:21:48, 0.0,/usr/sbin/rngd -f          ,rngd
+root    ,    636,      1, 1-06:21:48, 0.0,/usr/sbin/rsyslogd -n -iNON,rsyslogd
+root    ,    637,      1, 1-06:21:48, 0.0,/usr/sbin/smartd -n        ,smartd
+root    ,    644,      1, 1-06:21:48, 0.0,/usr/lib/udisks2/udisksd   ,udisksd
+root    ,    645,      1, 1-06:21:48, 0.0,/sbin/wpa_supplicant -u -s ,wpa_supplicant
+root    ,    730,      1, 1-06:21:42, 0.0,/lib/systemd/systemd-logind,systemd-logind
+root    ,    739,      1, 1-06:21:41, 0.0,/usr/lib/policykit-1/polkit,polkitd
+root    ,    749,      1, 1-06:21:41, 0.0,/usr/sbin/hostapd-wpe /etc/,hostapd-wpe
+root    ,    779,      1, 1-06:21:41, 0.0,/usr/sbin/lightdm          ,lightdm
+root    ,    794,      1, 1-06:21:40, 0.0,/opt/xplico/bin/dema -d /op,dema
+root    ,    800,      1, 1-06:21:40, 0.0,/sbin/agetty -o -p -- \u --,agetty
+root    ,    801,    779, 1-06:21:39, 1.0,/usr/lib/xorg/Xorg :0 -seat,Xorg
+postgres,    920,      1, 1-06:21:28, 0.0,/usr/lib/postgresql/12/bin/,postgres
+postgres,    921,      1, 1-06:21:28, 0.0,/usr/lib/postgresql/11/bin/,postgres
+root    ,    927,      1, 1-06:21:28, 0.0,/usr/lib/ipsec/starter --da,starter
+root    ,   1075,      2, 1-06:21:27, 0.0,[iprt-VBoxWQueue]          ,iprt-VBoxWQueue
+root    ,   1079,      2, 1-06:21:27, 0.0,[iprt-VBoxTscThr]          ,iprt-VBoxTscThr
+root    ,   1086,    927, 1-06:21:25, 0.0,/usr/lib/ipsec/charon      ,charon
+postgres,   1128,    920, 1-06:21:17, 0.0,postgres: 12/main: checkpoi,postgres
+postgres,   1129,    920, 1-06:21:17, 0.0,postgres: 12/main: backgrou,postgres
+postgres,   1130,    920, 1-06:21:17, 0.0,postgres: 12/main: walwrite,postgres
+postgres,   1131,    920, 1-06:21:17, 0.0,postgres: 12/main: autovacu,postgres
+postgres,   1132,    920, 1-06:21:17, 0.0,postgres: 12/main: stats co,postgres
+postgres,   1133,    920, 1-06:21:17, 0.0,postgres: 12/main: logical ,postgres
+rtkit   ,   1142,      1, 1-06:21:13, 0.0,/usr/libexec/rtkit-daemon  ,rtkit-daemon
+postgres,   1170,    921, 1-06:21:07, 0.0,postgres: 11/main: checkpoi,postgres
+postgres,   1171,    921, 1-06:21:07, 0.0,postgres: 11/main: backgrou,postgres
+postgres,   1172,    921, 1-06:21:07, 0.0,postgres: 11/main: walwrite,postgres
+postgres,   1173,    921, 1-06:21:07, 0.0,postgres: 11/main: autovacu,postgres
+postgres,   1174,    921, 1-06:21:07, 0.0,postgres: 11/main: stats co,postgres
+postgres,   1175,    921, 1-06:21:07, 0.0,postgres: 11/main: logical ,postgres
+root    ,   1231,      1, 1-06:21:00, 0.0,/usr/bin/python3 /usr/bin/f,faraday-server
+root    ,   1234,      2, 1-06:20:59, 0.0,[krfcommd]                 ,krfcommd
+root    ,   1237,    779, 1-06:20:42, 0.0,lightdm --session-child 12 ,lightdm
+paucabr+,   1248,      1, 1-06:20:34, 0.0,/lib/systemd/systemd --user,systemd
+paucabr+,   1249,   1248, 1-06:20:34, 0.0,(sd-pam)                   ,(sd-pam)
+paucabr+,   1259,   1248, 1-06:20:33, 0.5,/usr/bin/pulseaudio --daemo,pulseaudio
+paucabr+,   1262,      1, 1-06:20:33, 0.0,/usr/bin/gnome-keyring-daem,gnome-keyring-d
+paucabr+,   1265,   1237, 1-06:20:33, 0.0,x-session-manager          ,x-session-manag
+paucabr+,   1273,   1248, 1-06:20:33, 0.0,/usr/bin/dbus-daemon --sess,dbus-daemon
+paucabr+,   1294,   1248, 1-06:20:30, 0.0,/usr/lib/dconf/dconf-servic,dconf-service
+paucabr+,   1306,   1265, 1-06:20:30, 0.0,/usr/bin/ssh-agent x-sessio,ssh-agent
+paucabr+,   1307,   1248, 1-06:20:29, 0.0,/usr/lib/at-spi2-core/at-sp,at-spi-bus-laun
+paucabr+,   1312,   1307, 1-06:20:29, 0.0,/usr/bin/dbus-daemon --conf,dbus-daemon
+paucabr+,   1319,   1265, 1-06:20:28, 0.0,/usr/bin/mate-settings-daem,mate-settings-d
+paucabr+,   1321,   1248, 1-06:20:28, 0.0,/usr/lib/at-spi2-core/at-sp,at-spi2-registr
+paucabr+,   1327,   1265, 1-06:20:27, 0.1,marco                      ,marco
+paucabr+,   1328,   1248, 1-06:20:27, 0.0,/usr/lib/gvfs/gvfsd        ,gvfsd
+paucabr+,   1349,   1265, 1-06:20:25, 0.0,mate-panel                 ,mate-panel
+paucabr+,   1361,      1, 1-06:20:21, 0.0,syndaemon -i 0.5 -K -R     ,syndaemon
+paucabr+,   1362,   1265, 1-06:20:21, 0.0,caja                       ,caja
+paucabr+,   1363,   1248, 1-06:20:21, 0.0,/usr/lib/gvfs/gvfs-udisks2-,gvfs-udisks2-vo
+paucabr+,   1368,   1248, 1-06:20:20, 0.0,/usr/lib/gvfs/gvfs-goa-volu,gvfs-goa-volume
+paucabr+,   1372,   1248, 1-06:20:20, 0.0,/usr/lib/gvfs/gvfs-afc-volu,gvfs-afc-volume
+paucabr+,   1377,   1248, 1-06:20:20, 0.0,/usr/lib/gvfs/gvfs-gphoto2-,gvfs-gphoto2-vo
+paucabr+,   1382,   1248, 1-06:20:19, 0.0,/usr/lib/x86_64-linux-gnu/b,brisk-menu
+paucabr+,   1383,   1248, 1-06:20:19, 0.1,/usr/lib/mate-panel/wnck-ap,wnck-applet
+paucabr+,   1390,   1248, 1-06:20:19, 0.0,/usr/lib/gvfs/gvfs-mtp-volu,gvfs-mtp-volume
+paucabr+,   1394,   1265, 1-06:20:19, 0.0,nm-applet                  ,nm-applet
+paucabr+,   1398,   1265, 1-06:20:19, 0.0,/usr/bin/python3 /usr/share,applet.py
+paucabr+,   1400,   1265, 1-06:20:19, 0.0,/usr/bin/python3 /usr/bin/b,blueman-applet
+paucabr+,   1415,   1265, 1-06:20:18, 0.0,/usr/lib/x86_64-linux-gnu/p,polkit-mate-aut
+paucabr+,   1423,   1265, 1-06:20:18, 0.0,/usr/libexec/geoclue-2.0/de,agent
+paucabr+,   1436,   1265, 1-06:20:17, 0.0,mate-power-manager         ,mate-power-mana
+paucabr+,   1442,   1265, 1-06:20:16, 0.0,mate-volume-control-status-,mate-volume-con
+paucabr+,   1445,   1265, 1-06:20:16, 0.0,mate-screensaver           ,mate-screensave
+root    ,   1456,      1, 1-06:20:16, 0.0,/usr/lib/upower/upowerd    ,upowerd
+paucabr+,   1492,   1328, 1-06:20:11, 0.0,/usr/lib/gvfs/gvfsd-trash -,gvfsd-trash
+paucabr+,   1502,      1, 1-06:20:11, 0.0,/usr/bin/python3 /usr/bin/b,blueman-tray
+paucabr+,   1511,   1248, 1-06:20:10, 0.0,/usr/lib/bluetooth/obexd   ,obexd
+paucabr+,   1532,   1248, 1-06:20:06, 0.0,/usr/lib/gvfs/gvfsd-metadat,gvfsd-metadata
+postgres,   1538,    921, 1-06:19:56, 0.0,postgres: 11/main: faraday_,postgres
+paucabr+,   1542,   1248, 1-06:19:50, 0.0,/usr/lib/mate-power-manager,mate-inhibit-ap
+paucabr+,   1548,   1248, 1-06:19:50, 0.0,/usr/lib/mate-panel/clock-a,clock-applet
+paucabr+,   1550,   1248, 1-06:19:50, 0.0,/usr/lib/mate-panel/notific,notification-ar
+paucabr+,   1551,   1248, 1-06:19:50, 0.0,/usr/lib/mate-applets/mate-,mate-multiload-
+paucabr+,   1579,   1349, 1-06:18:48, 3.3,firefox                    ,firefox
+paucabr+,   1673,   1579, 1-06:18:36, 0.4,/usr/lib/firefox/firefox -c,Web Content
+paucabr+,   1709,   1579, 1-06:18:34, 0.1,/usr/lib/firefox/firefox -c,Web Content
+paucabr+,   1755,   1579, 1-06:18:33, 0.3,/usr/lib/firefox/firefox -c,WebExtensions
+paucabr+,   1819,   1579, 1-06:18:31, 0.6,/usr/lib/firefox/firefox -c,Web Content
+colord  ,   3081,      1, 1-05:15:20, 0.0,/usr/lib/colord/colord     ,colord
+paucabr+,   3184,   1248, 1-05:14:14, 0.0,/usr/bin/python3 /usr/share,scp-dbus-servic
+paucabr+,   4815,   1328, 1-02:41:03, 0.0,/usr/lib/gvfs/gvfsd-network,gvfsd-network
+paucabr+,   4828,   1328, 1-02:41:02, 0.0,/usr/lib/gvfs/gvfsd-dnssd -,gvfsd-dnssd
+paucabr+,   7076,   1579, 1-01:23:28, 0.2,/usr/lib/firefox/firefox -c,Web Content
+paucabr+,   7351,   1579, 1-01:03:51, 0.4,/usr/lib/firefox/firefox -c,Web Content
+paucabr+,   8009,   1579, 1-01:01:18, 5.1,/usr/lib/firefox/firefox -c,Web Content
+root    ,  16923,      1, 1-01:00:06, 0.0,dbus-launch --autolaunch 3c,dbus-launch
+root    ,  16924,      1, 1-01:00:06, 0.0,/usr/bin/dbus-daemon --sysl,dbus-daemon
+paucabr+,  17227,      1, 1-00:59:33, 0.0,dbus-launch --autolaunch 3c,dbus-launch
+paucabr+,  17228,      1, 1-00:59:33, 0.0,/usr/bin/dbus-daemon --sysl,dbus-daemon
+paucabr+,  19116,   1579, 1-00:22:39, 0.7,/usr/lib/firefox/firefox -c,Web Content
+root    ,  19775,      2, 1-00:11:46, 0.0,[dio/sda4]                 ,dio/sda4
+root    ,  22080,      2,   17:40:49, 0.0,[kworker/u17:2-hci0]       ,kworker/u17:2-hci0
+paucabr+,  27468,   1579,   14:21:02, 0.0,/usr/lib/firefox/firefox -c,RDD Process
+root    ,  29493,      1,   10:56:45, 0.0,/usr/sbin/cupsd -l         ,cupsd
+paucabr+,  31272,   1349,   08:46:30, 0.1,/usr/share/codium/codium --,codium
+paucabr+,  31276,  31272,   08:46:28, 0.0,/usr/share/codium/codium --,codium
+paucabr+,  31303,  31272,   08:46:26, 0.2,/usr/share/codium/codium --,codium
+paucabr+,  31369,  31272,   08:46:14, 0.0,/usr/share/codium/codium --,codium
+paucabr+,  31700,  31272,   08:44:21, 0.6,/usr/share/codium/codium --,codium
+paucabr+,  31719,  31700,   08:44:19, 0.0,/usr/share/codium/codium --,codium
+paucabr+,  31731,  31700,   08:44:18, 0.0,/usr/share/codium/codium /u,codium
+root    ,  32129,      2,   04:24:26, 0.0,[kworker/0:2-events]       ,kworker/0:2-events
+root    ,  32314,      2,   04:24:17, 0.0,[kworker/u17:1-hci0]       ,kworker/u17:1-hci0
+root    ,  33484,      2,   01:01:42, 0.0,[irq/48-mei_me]            ,irq/48-mei_me
+paucabr+,  34203,   1349,      54:06, 0.4,pluma                      ,pluma
+paucabr+,  34488,   1579,      46:03, 0.8,/usr/lib/firefox/firefox -c,Web Content
+root    ,  35002,      2,      30:40, 0.5,[kworker/1:0-events]       ,kworker/1:0-events
+root    ,  35243,      2,      21:23, 0.0,[kworker/0:0-events]       ,kworker/0:0-events
+root    ,  35343,      2,      18:31, 0.0,[kworker/u16:2-phy0]       ,kworker/u16:2-phy0
+paucabr+,  35457,   1248,      16:15, 1.0,/home/paucabral/Qt/Tools/Qt,qtcreator
+paucabr+,  35469,  35457,      16:15, 0.0,/home/paucabral/Qt/Tools/Qt,clangbackend
+root    ,  35752,      2,      11:42, 0.2,[kworker/1:2-events]       ,kworker/1:2-events
+paucabr+,  35887,      1,      08:59, 0.2,mate-terminal              ,mate-terminal
+paucabr+,  35893,  35887,      08:59, 0.0,bash                       ,bash
+root    ,  36105,      2,      06:15, 0.1,[kworker/1:1-events]       ,kworker/1:1-events
+root    ,  36162,      2,      06:05, 0.0,[kworker/u16:1-phy0]       ,kworker/u16:1-phy0
+root    ,  36290,      2,      03:02, 0.0,[kworker/1:3]              ,kworker/1:3
+root    ,  36305,      2,      02:46, 0.0,[kworker/0:1-events]       ,kworker/0:1-events
+root    ,  36386,  35893,      00:52, 0.0,sudo python3 main.py       ,sudo
+root    ,  36387,  36386,      00:52, 5.8,python3 main.py            ,python3
+root    ,  36401,      2,      00:39, 0.0,[kworker/u16:0-phy0]       ,kworker/u16:0-phy0
+root    ,  36445,  36387,      00:00, 0.0,/bin/sh -c ./scripts/proces,sh
+root    ,  36446,  36445,      00:00, 0.0,/bin/bash ./scripts/process,ps.sh
+root    ,  36447,  36446,      00:00, 0.0,ps -eo %U,%p,%P,%t,%C,%a,%c,ps
