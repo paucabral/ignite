@@ -1468,28 +1468,40 @@ color: rgb(255, 255, 255);
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QTextBrowser" name="textBrowser">
+    <widget class="QPlainTextEdit" name="plainTextEdit">
      <property name="geometry">
       <rect>
-       <x>60</x>
+       <x>30</x>
        <y>30</y>
-       <width>651</width>
+       <width>711</width>
        <height>431</height>
       </rect>
      </property>
+     <property name="font">
+      <font>
+       <family>Courier 10 Pitch</family>
+       <pointsize>10</pointsize>
+       <weight>50</weight>
+       <italic>false</italic>
+       <bold>false</bold>
+      </font>
+     </property>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(8, 5, 13);
-font: 75 10pt &quot;DejaVu Sans&quot;;
-color: rgb(211, 215, 207);</string>
+color: rgb(211, 215, 207);
+font: 10pt &quot;Courier 10 Pitch&quot;;</string>
+     </property>
+     <property name="plainText">
+      <string/>
      </property>
     </widget>
    </widget>
-   <zorder>sysinfoFrame</zorder>
-   <zorder>sidebar</zorder>
    <zorder>netconfigFrame</zorder>
    <zorder>processesFrame</zorder>
    <zorder>useraccountsFrame</zorder>
+   <zorder>sysinfoFrame</zorder>
    <zorder>dashboardFrame</zorder>
+   <zorder>sidebar</zorder>
    <zorder>header</zorder>
   </widget>
  </widget>

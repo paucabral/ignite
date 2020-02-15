@@ -1,3 +1,4 @@
 #!/bin/bash
 
-df -ha > diskspace.txt
+df -ha > test.txt
+tr -s ' ' ',' <test.txt >diskspace.txt

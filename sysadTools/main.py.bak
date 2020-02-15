@@ -16,6 +16,7 @@ import logging
 import threading
 import time
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -680,13 +681,13 @@ class Ui_MainWindow(object):
 "font: 10pt \"Courier 10 Pitch\";")
         self.plainTextEdit.setPlainText("")
         self.plainTextEdit.setObjectName("plainTextEdit")
+        self.sidebar.raise_()
         self.netconfigFrame.raise_()
         self.processesFrame.raise_()
         self.useraccountsFrame.raise_()
-        self.sysinfoFrame.raise_()
         self.dashboardFrame.raise_()
-        self.sidebar.raise_()
         self.header.raise_()
+        self.sysinfoFrame.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -731,8 +732,6 @@ class Ui_MainWindow(object):
         self.setdhcpButton.setText(_translate("MainWindow", "Save Configuration"))
 
 #Succedding lines from this point are now manual code. Include all imports from above!
-    #sysinfo read only display
-        self.plainTextEdit.setReadOnly(True)
     #Table headers
         self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
         self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
@@ -854,6 +853,7 @@ class Ui_MainWindow(object):
             reader = csv.reader(csvfile, delimiter=':')
             self.accountsTable.setRowCount(0)
             for row in reader:
+                print(row)
                 rowPosition = self.accountsTable.rowCount()
                 self.accountsTable.insertRow(rowPosition)
 
@@ -937,7 +937,7 @@ class Ui_MainWindow(object):
         sysfile = "system.txt"
         with open(sysfile, 'rt') as txtfile:
             systemI = txtfile.read()
-            self.plainTextEdit.setPlainText(systemI)
+            self.plainTextEdit.setPlaceholderText(systemI)
 
     #end sysinfo items
 
