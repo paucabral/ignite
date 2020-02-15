@@ -918,14 +918,23 @@ class Ui_MainWindow(object):
     def runBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 1"
         subprocess.call(self.cmd, shell=True)
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
     
     def extractBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 2"
         subprocess.call(self.cmd, shell=True)
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
     
     def deleteBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 3"
         subprocess.call(self.cmd, shell=True)
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
 
 
     #end dashboard items
