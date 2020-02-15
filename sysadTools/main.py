@@ -767,9 +767,14 @@ class Ui_MainWindow(object):
         self.runbackupButton.clicked.connect(self.runBackup)
         self.extractbackupButton.clicked.connect(self.extractBackup)
         self.deletebackupButton.clicked.connect(self.deleteBackup)
-
-
         #end dashboard items
+
+        #start network items
+        self.dhcpRadioButton.clicked.connect(self.dhcpSettings)
+        self.staticipRadioButton.clicked.connect(self.staticipSettings)
+        self.setdhcpButton.clicked.connect(self.saveDhcp)
+        self.setstaticipButton.clicked.connect(self.saveStaticip)
+        #end network items
 
     #start sidebar button clicks
     def showAccounts(self):
@@ -936,7 +941,6 @@ class Ui_MainWindow(object):
         self.notifmainLine.setText("")
         self.notifdescLine.setText("")
 
-
     #end dashboard items
 
     #start sysinfo items
@@ -947,8 +951,36 @@ class Ui_MainWindow(object):
         with open(sysfile, 'rt') as txtfile:
             systemI = txtfile.read()
             self.plainTextEdit.setPlainText(systemI)
-
     #end sysinfo items
+
+    #start networkconfig items
+    def dhcpSettings(self):
+        self.staticipFrame.hide()
+        self.setdhcpButton.show()
+
+    def staticipSettings(self):
+        self.staticipFrame.show()
+        self.setdhcpButton.hide()
+    
+    def saveDhcp(self):
+        self.cmd = "./scripts/networkconfig/dhcp.sh"
+        subprocess.call(self.cmd, shell=True)
+
+    def saveStaticip(self):
+        ip = str(self.ipaddressLine.text())
+        sm = str(self.subnetmaskLine.text())
+        ba = str(self.broadcastaddressLine.text())
+        dg = str(self.defaultgatewayLine.text())
+        
+        self.cmd = "./scripts/networkconfig/staticipconfig.sh {} {} {} {}".format(ip, sm, ba, dg)
+        subprocess.call(self.cmd, shell=True)
+
+        self.ipaddressLine.setText("")
+        self.subnetmaskLine.setText("")
+        self.broadcastaddressLine.setText("")
+        self.defaultgatewayLine.setText("")
+
+    #end networkconfig items
 
 
 if __name__ == "__main__":
@@ -962,6 +994,8 @@ if __name__ == "__main__":
     ui.currentDate()
     ui.currentTime()
     ui.sysInfo()
+    ui.staticipFrame.hide()
+    ui.setdhcpButton.hide()
     
     MainWindow.show()
     sys.exit(app.exec_())

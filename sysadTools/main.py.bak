@@ -16,7 +16,6 @@ import logging
 import threading
 import time
 
-
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -681,13 +680,13 @@ class Ui_MainWindow(object):
 "font: 10pt \"Courier 10 Pitch\";")
         self.plainTextEdit.setPlainText("")
         self.plainTextEdit.setObjectName("plainTextEdit")
-        self.sidebar.raise_()
         self.netconfigFrame.raise_()
         self.processesFrame.raise_()
         self.useraccountsFrame.raise_()
-        self.dashboardFrame.raise_()
-        self.header.raise_()
         self.sysinfoFrame.raise_()
+        self.dashboardFrame.raise_()
+        self.sidebar.raise_()
+        self.header.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -732,6 +731,8 @@ class Ui_MainWindow(object):
         self.setdhcpButton.setText(_translate("MainWindow", "Save Configuration"))
 
 #Succedding lines from this point are now manual code. Include all imports from above!
+    #sysinfo read only display
+        self.plainTextEdit.setReadOnly(True)
     #Table headers
         self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
         self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
@@ -766,9 +767,14 @@ class Ui_MainWindow(object):
         self.runbackupButton.clicked.connect(self.runBackup)
         self.extractbackupButton.clicked.connect(self.extractBackup)
         self.deletebackupButton.clicked.connect(self.deleteBackup)
-
-
         #end dashboard items
+
+        #start network items
+        self.dhcpRadioButton.clicked.connect(self.dhcpSettings)
+        self.staticipRadioButton.clicked.connect(self.staticipSettings)
+        self.setdhcpButton.clicked.connect(self.saveDhcp)
+        self.setstaticipButton.clicked.connect(self.saveStaticip)
+        #end network items
 
     #start sidebar button clicks
     def showAccounts(self):
@@ -853,7 +859,6 @@ class Ui_MainWindow(object):
             reader = csv.reader(csvfile, delimiter=':')
             self.accountsTable.setRowCount(0)
             for row in reader:
-                print(row)
                 rowPosition = self.accountsTable.rowCount()
                 self.accountsTable.insertRow(rowPosition)
 
@@ -918,15 +923,23 @@ class Ui_MainWindow(object):
     def runBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 1"
         subprocess.call(self.cmd, shell=True)
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
     
     def extractBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 2"
         subprocess.call(self.cmd, shell=True)
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
     
     def deleteBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 3"
         subprocess.call(self.cmd, shell=True)
-
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
 
     #end dashboard items
 
@@ -937,9 +950,37 @@ class Ui_MainWindow(object):
         sysfile = "system.txt"
         with open(sysfile, 'rt') as txtfile:
             systemI = txtfile.read()
-            self.plainTextEdit.setPlaceholderText(systemI)
-
+            self.plainTextEdit.setPlainText(systemI)
     #end sysinfo items
+
+    #start networkconfig items
+    def dhcpSettings(self):
+        self.staticipFrame.hide()
+        self.setdhcpButton.show()
+
+    def staticipSettings(self):
+        self.staticipFrame.show()
+        self.setdhcpButton.hide()
+    
+    def saveDhcp(self):
+        self.cmd = "./scripts/networkconfig/dhcp.sh"
+        subprocess.call(self.cmd, shell=True)
+
+    def saveStaticip(self):
+        ip = str(self.ipaddressLine.text())
+        sm = str(self.subnetmaskLine.text())
+        ba = str(self.broadcastaddressLine.text())
+        dg = str(self.defaultgatewayLine.text())
+        
+        self.cmd = "./scripts/networkconfig/staticipconfig.sh {} {} {} {}".format(ip, sm, ba, dg)
+        subprocess.call(self.cmd, shell=True)
+
+        self.ipaddressLine.setText("")
+        self.subnetmaskLine.setText("")
+        self.broadcastaddressLine.setText("")
+        self.defaultgatewayLine.setText("")
+
+    #end networkconfig items
 
 
 if __name__ == "__main__":
@@ -953,6 +994,8 @@ if __name__ == "__main__":
     ui.currentDate()
     ui.currentTime()
     ui.sysInfo()
+    ui.staticipFrame.hide()
+    ui.setdhcpButton.hide()
     
     MainWindow.show()
     sys.exit(app.exec_())
