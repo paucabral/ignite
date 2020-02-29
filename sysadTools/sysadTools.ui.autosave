@@ -2224,9 +2224,9 @@ font: 10pt &quot;Courier 10 Pitch&quot;;</string>
    <zorder>sysinfoFrame</zorder>
    <zorder>sidebar</zorder>
    <zorder>processesFrame</zorder>
-   <zorder>accountcreationFrame</zorder>
    <zorder>dashboardFrame</zorder>
    <zorder>header</zorder>
+   <zorder>accountcreationFrame</zorder>
   </widget>
  </widget>
  <resources/>

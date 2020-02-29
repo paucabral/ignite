@@ -16,6 +16,7 @@ import logging
 import threading
 import time
 
+
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
@@ -25,6 +26,20 @@ class Ui_MainWindow(object):
         icon = QtGui.QIcon()
         icon.addPixmap(QtGui.QPixmap("assets/logo/logo.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
         MainWindow.setWindowIcon(icon)
+        MainWindow.setStyleSheet("QScrollBar::horizontal{\n"
+"    border: 1px solid;\n"
+"    background: #32CC99;\n"
+"    height: 15px;\n"
+"    width: 10px;\n"
+"    margin: 0px 0px 0px 0px;\n"
+"}\n"
+"\n"
+"QScrollBar::handle:horizontal{\n"
+"    background: rgb(46, 52, 54);\n"
+"    min-width: 0px;\n"
+"    min-height:0px;\n"
+"    border-radius: 20px;\n"
+"}")
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setMaximumSize(QtCore.QSize(1024, 576))
         self.centralwidget.setStyleSheet("background-color:  #191AF")
@@ -107,7 +122,7 @@ class Ui_MainWindow(object):
         self.processesButton.setIconSize(QtCore.QSize(18, 18))
         self.processesButton.setObjectName("processesButton")
         self.netconfigButton = QtWidgets.QPushButton(self.sidebar)
-        self.netconfigButton.setGeometry(QtCore.QRect(10, 170, 231, 41))
+        self.netconfigButton.setGeometry(QtCore.QRect(10, 220, 231, 41))
         self.netconfigButton.setStyleSheet("QPushButton#netconfigButton{\n"
 "background-color: #131217;\n"
 "font: 75 12pt \"Latin Modern Sans\";\n"
@@ -130,7 +145,7 @@ class Ui_MainWindow(object):
         self.netconfigButton.setIconSize(QtCore.QSize(18, 18))
         self.netconfigButton.setObjectName("netconfigButton")
         self.sysinfoButton = QtWidgets.QPushButton(self.sidebar)
-        self.sysinfoButton.setGeometry(QtCore.QRect(10, 220, 231, 41))
+        self.sysinfoButton.setGeometry(QtCore.QRect(10, 270, 231, 41))
         self.sysinfoButton.setStyleSheet("QPushButton#sysinfoButton{\n"
 "background-color: #131217;\n"
 "font: 75 12pt \"Latin Modern Sans\";\n"
@@ -175,11 +190,35 @@ class Ui_MainWindow(object):
         self.accountconfigButton.setIcon(icon5)
         self.accountconfigButton.setIconSize(QtCore.QSize(18, 18))
         self.accountconfigButton.setObjectName("accountconfigButton")
+        self.accountcreationButton = QtWidgets.QPushButton(self.sidebar)
+        self.accountcreationButton.setGeometry(QtCore.QRect(10, 170, 231, 41))
+        self.accountcreationButton.setStyleSheet("QPushButton#accountcreationButton{\n"
+"background-color: #131217;\n"
+"font: 75 12pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"color: rgb(255, 255, 255);\n"
+"border-style: outset;\n"
+"border-radius: 13px;\n"
+"text-align: left;\n"
+"padding-left: 20px;\n"
+"}\n"
+"\n"
+"QPushButton#accountcreationButton:hover{\n"
+"background-color: #1d1c23;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        icon6 = QtGui.QIcon()
+        icon6.addPixmap(QtGui.QPixmap("assets/sidebar_buttons/accountcreation.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.accountcreationButton.setIcon(icon6)
+        self.accountcreationButton.setIconSize(QtCore.QSize(18, 18))
+        self.accountcreationButton.setObjectName("accountcreationButton")
         self.dashboardButton.raise_()
         self.processesButton.raise_()
         self.netconfigButton.raise_()
         self.accountconfigButton.raise_()
         self.sysinfoButton.raise_()
+        self.accountcreationButton.raise_()
         self.dashboardFrame = QtWidgets.QFrame(self.centralwidget)
         self.dashboardFrame.setGeometry(QtCore.QRect(250, 90, 781, 491))
         self.dashboardFrame.setStyleSheet("background-color: #191a1f")
@@ -414,11 +453,11 @@ class Ui_MainWindow(object):
         self.killbyNamelabel = QtWidgets.QLabel(self.processesFrame)
         self.killbyNamelabel.setGeometry(QtCore.QRect(280, 430, 161, 21))
         self.killbyNamelabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
-"background-color: #212025;\n"
+"background-color: #191a1f;\n"
 "color: rgb(255,255,255)")
         self.killbyNamelabel.setObjectName("killbyNamelabel")
         self.processTable = QtWidgets.QTableWidget(self.processesFrame)
-        self.processTable.setGeometry(QtCore.QRect(30, 20, 711, 351))
+        self.processTable.setGeometry(QtCore.QRect(30, 60, 711, 311))
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Ignored)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -440,7 +479,7 @@ class Ui_MainWindow(object):
         self.killbyPIDlabel = QtWidgets.QLabel(self.processesFrame)
         self.killbyPIDlabel.setGeometry(QtCore.QRect(280, 390, 161, 31))
         self.killbyPIDlabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
-"background-color: #212025;\n"
+"background-color: #191a1f;\n"
 "color: rgb(255,255,255)")
         self.killbyPIDlabel.setObjectName("killbyPIDlabel")
         self.killbypidButton = QtWidgets.QPushButton(self.processesFrame)
@@ -481,6 +520,18 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.refreshprocessButton.setObjectName("refreshprocessButton")
+        self.uptimeLabel = QtWidgets.QLabel(self.processesFrame)
+        self.uptimeLabel.setGeometry(QtCore.QRect(140, 13, 61, 31))
+        self.uptimeLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"color: rgb(255,255,255)")
+        self.uptimeLabel.setObjectName("uptimeLabel")
+        self.uptimeDynamicLabel = QtWidgets.QLabel(self.processesFrame)
+        self.uptimeDynamicLabel.setGeometry(QtCore.QRect(210, 26, 441, 33))
+        self.uptimeDynamicLabel.setStyleSheet("font: 13pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.uptimeDynamicLabel.setObjectName("uptimeDynamicLabel")
         self.useraccountsFrame = QtWidgets.QFrame(self.centralwidget)
         self.useraccountsFrame.setGeometry(QtCore.QRect(249, 89, 781, 491))
         self.useraccountsFrame.setStyleSheet("background-color: #191a1f")
@@ -680,12 +731,296 @@ class Ui_MainWindow(object):
 "font: 10pt \"Courier 10 Pitch\";")
         self.plainTextEdit.setPlainText("")
         self.plainTextEdit.setObjectName("plainTextEdit")
+        self.accountcreationFrame = QtWidgets.QFrame(self.centralwidget)
+        self.accountcreationFrame.setGeometry(QtCore.QRect(250, 90, 781, 491))
+        self.accountcreationFrame.setStyleSheet("background-color: #191a1f")
+        self.accountcreationFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.accountcreationFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.accountcreationFrame.setObjectName("accountcreationFrame")
+        self.createuseraccountLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.createuseraccountLabel.setGeometry(QtCore.QRect(30, 10, 201, 31))
+        self.createuseraccountLabel.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.createuseraccountLabel.setObjectName("createuseraccountLabel")
+        self.usernameLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.usernameLine.setGeometry(QtCore.QRect(120, 40, 221, 31))
+        self.usernameLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.usernameLine.setObjectName("usernameLine")
+        self.usernameLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.usernameLabel.setGeometry(QtCore.QRect(30, 40, 81, 31))
+        self.usernameLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.usernameLabel.setObjectName("usernameLabel")
+        self.passwordLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.passwordLine.setGeometry(QtCore.QRect(120, 80, 221, 31))
+        self.passwordLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.passwordLine.setObjectName("passwordLine")
+        self.passwordLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.passwordLabel.setGeometry(QtCore.QRect(30, 80, 81, 31))
+        self.passwordLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.passwordLabel.setObjectName("passwordLabel")
+        self.mprimarygroupLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.mprimarygroupLine.setGeometry(QtCore.QRect(170, 220, 171, 31))
+        self.mprimarygroupLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.mprimarygroupLine.setObjectName("mprimarygroupLine")
+        self.modifyuseraccountLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.modifyuseraccountLabel.setGeometry(QtCore.QRect(30, 150, 211, 31))
+        self.modifyuseraccountLabel.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.modifyuseraccountLabel.setObjectName("modifyuseraccountLabel")
+        self.musernameLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.musernameLine.setGeometry(QtCore.QRect(170, 180, 171, 31))
+        self.musernameLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.musernameLine.setObjectName("musernameLine")
+        self.musernameLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.musernameLabel.setGeometry(QtCore.QRect(30, 180, 81, 31))
+        self.musernameLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.musernameLabel.setObjectName("musernameLabel")
+        self.mprimarygroupLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.mprimarygroupLabel.setGeometry(QtCore.QRect(30, 220, 111, 31))
+        self.mprimarygroupLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.mprimarygroupLabel.setObjectName("mprimarygroupLabel")
+        self.msecondarygroupLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.msecondarygroupLabel.setGeometry(QtCore.QRect(30, 260, 131, 31))
+        self.msecondarygroupLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.msecondarygroupLabel.setObjectName("msecondarygroupLabel")
+        self.msecondarygroupLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.msecondarygroupLine.setGeometry(QtCore.QRect(170, 260, 171, 31))
+        self.msecondarygroupLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.msecondarygroupLine.setObjectName("msecondarygroupLine")
+        self.eusernameLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.eusernameLabel.setGeometry(QtCore.QRect(30, 360, 81, 31))
+        self.eusernameLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.eusernameLabel.setObjectName("eusernameLabel")
+        self.eusernameLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.eusernameLine.setGeometry(QtCore.QRect(170, 360, 171, 31))
+        self.eusernameLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.eusernameLine.setObjectName("eusernameLine")
+        self.setaccountexpiryLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.setaccountexpiryLabel.setGeometry(QtCore.QRect(30, 330, 201, 31))
+        self.setaccountexpiryLabel.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.setaccountexpiryLabel.setObjectName("setaccountexpiryLabel")
+        self.edateLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.edateLine.setGeometry(QtCore.QRect(170, 400, 171, 31))
+        self.edateLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.edateLine.setObjectName("edateLine")
+        self.edateLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.edateLabel.setGeometry(QtCore.QRect(30, 400, 121, 31))
+        self.edateLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.edateLabel.setObjectName("edateLabel")
+        self.creategroupLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.creategroupLabel.setGeometry(QtCore.QRect(420, 10, 201, 31))
+        self.creategroupLabel.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.creategroupLabel.setObjectName("creategroupLabel")
+        self.createuseraccountButton = QtWidgets.QPushButton(self.accountcreationFrame)
+        self.createuseraccountButton.setGeometry(QtCore.QRect(140, 120, 101, 21))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.createuseraccountButton.setFont(font)
+        self.createuseraccountButton.setStyleSheet("QPushButton#createuseraccountButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 10pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#createuseraccountButton:hover{\n"
+"background-color: #1483fe;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.createuseraccountButton.setObjectName("createuseraccountButton")
+        self.modifyuseraccountButton = QtWidgets.QPushButton(self.accountcreationFrame)
+        self.modifyuseraccountButton.setGeometry(QtCore.QRect(140, 300, 101, 21))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.modifyuseraccountButton.setFont(font)
+        self.modifyuseraccountButton.setStyleSheet("QPushButton#modifyuseraccountButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 10pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#modifyuseraccountButton:hover{\n"
+"background-color: rgb(150, 20, 30);\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.modifyuseraccountButton.setObjectName("modifyuseraccountButton")
+        self.setexpiryButton = QtWidgets.QPushButton(self.accountcreationFrame)
+        self.setexpiryButton.setGeometry(QtCore.QRect(140, 440, 101, 21))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.setexpiryButton.setFont(font)
+        self.setexpiryButton.setStyleSheet("QPushButton#setexpiryButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 10pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#setexpiryButton:hover{\n"
+"background-color: rgb(117, 80, 123);\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.setexpiryButton.setObjectName("setexpiryButton")
+        self.groupnameLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.groupnameLine.setGeometry(QtCore.QRect(530, 40, 201, 31))
+        self.groupnameLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.groupnameLine.setObjectName("groupnameLine")
+        self.groupnameLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.groupnameLabel.setGeometry(QtCore.QRect(420, 40, 101, 31))
+        self.groupnameLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.groupnameLabel.setObjectName("groupnameLabel")
+        self.creategroupButton = QtWidgets.QPushButton(self.accountcreationFrame)
+        self.creategroupButton.setGeometry(QtCore.QRect(530, 80, 101, 21))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.creategroupButton.setFont(font)
+        self.creategroupButton.setStyleSheet("QPushButton#creategroupButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 10pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#creategroupButton:hover{\n"
+"background-color: rgb(78, 154, 6);\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.creategroupButton.setObjectName("creategroupButton")
+        self.userinfoLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.userinfoLabel.setGeometry(QtCore.QRect(480, 120, 161, 31))
+        self.userinfoLabel.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.userinfoLabel.setObjectName("userinfoLabel")
+        self.iusernameLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.iusernameLine.setGeometry(QtCore.QRect(470, 160, 161, 31))
+        self.iusernameLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.iusernameLine.setObjectName("iusernameLine")
+        self.iusernameLabel = QtWidgets.QLabel(self.accountcreationFrame)
+        self.iusernameLabel.setGeometry(QtCore.QRect(380, 160, 81, 31))
+        self.iusernameLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #191a1f;\n"
+"color: rgb(255,255,255)")
+        self.iusernameLabel.setObjectName("iusernameLabel")
+        self.userinfoButton = QtWidgets.QPushButton(self.accountcreationFrame)
+        self.userinfoButton.setGeometry(QtCore.QRect(650, 160, 91, 31))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.userinfoButton.setFont(font)
+        self.userinfoButton.setStyleSheet("QPushButton#userinfoButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 10pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#userinfoButton:hover{\n"
+"background-color: #1483fe;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.userinfoButton.setObjectName("userinfoButton")
+        self.userinfoTextEdit = QtWidgets.QPlainTextEdit(self.accountcreationFrame)
+        self.userinfoTextEdit.setGeometry(QtCore.QRect(380, 200, 361, 261))
+        font = QtGui.QFont()
+        font.setFamily("Courier 5 Pitch")
+        font.setPointSize(5)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(20)
+        self.userinfoTextEdit.setFont(font)
+        self.userinfoTextEdit.setStyleSheet("background-color: rgb(8, 5, 13);\n"
+"color: rgb(211, 215, 207);\n"
+"font: 10pt \"Courier 10 Pitch\";")
+        self.userinfoTextEdit.setPlainText("")
+        self.userinfoTextEdit.setObjectName("userinfoTextEdit")
         self.netconfigFrame.raise_()
-        self.processesFrame.raise_()
         self.useraccountsFrame.raise_()
         self.sysinfoFrame.raise_()
-        self.dashboardFrame.raise_()
         self.sidebar.raise_()
+        self.processesFrame.raise_()
+        self.accountcreationFrame.raise_()
+        self.dashboardFrame.raise_()
         self.header.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
 
@@ -702,6 +1037,7 @@ class Ui_MainWindow(object):
         self.netconfigButton.setText(_translate("MainWindow", "  Network Configuration"))
         self.sysinfoButton.setText(_translate("MainWindow", "  System Information"))
         self.accountconfigButton.setText(_translate("MainWindow", "  User Accounts"))
+        self.accountcreationButton.setText(_translate("MainWindow", "  Account Creation"))
         self.date.setText(_translate("MainWindow", "Tue Feb 11 2020"))
         self.time.setText(_translate("MainWindow", "00:24:32 PST"))
         self.runbackupButton.setText(_translate("MainWindow", "RUN BACKUP"))
@@ -719,6 +1055,8 @@ class Ui_MainWindow(object):
         self.killbyPIDlabel.setText(_translate("MainWindow", "Kill Process by PID:"))
         self.killbypidButton.setText(_translate("MainWindow", "Kill PID"))
         self.refreshprocessButton.setText(_translate("MainWindow", "Refresh"))
+        self.uptimeLabel.setText(_translate("MainWindow", "Uptime:"))
+        self.uptimeDynamicLabel.setText(_translate("MainWindow", "11:34:26 up 24 min,  1 user,  load average: 0.67, 0.99, 0.82"))
         self.accountsButton.setText(_translate("MainWindow", "View and Export Accounts"))
         self.accountsLabel.setText(_translate("MainWindow", "Accounts"))
         self.dhcpRadioButton.setText(_translate("MainWindow", "DHCP"))
@@ -729,10 +1067,30 @@ class Ui_MainWindow(object):
         self.defaultgatewayLabel.setText(_translate("MainWindow", "Default Gateway:"))
         self.staticipRadioButton.setText(_translate("MainWindow", "Static IP Configuration"))
         self.setdhcpButton.setText(_translate("MainWindow", "Save Configuration"))
+        self.createuseraccountLabel.setText(_translate("MainWindow", "Create User Account"))
+        self.usernameLabel.setText(_translate("MainWindow", "Username:"))
+        self.passwordLabel.setText(_translate("MainWindow", "Password:"))
+        self.modifyuseraccountLabel.setText(_translate("MainWindow", "Modify User Account"))
+        self.musernameLabel.setText(_translate("MainWindow", "Username:"))
+        self.mprimarygroupLabel.setText(_translate("MainWindow", "Primary Group:"))
+        self.msecondarygroupLabel.setText(_translate("MainWindow", "Secondary Group:"))
+        self.eusernameLabel.setText(_translate("MainWindow", "Username:"))
+        self.setaccountexpiryLabel.setText(_translate("MainWindow", "Set Account Expiry"))
+        self.edateLabel.setText(_translate("MainWindow", "Expiration Date:"))
+        self.creategroupLabel.setText(_translate("MainWindow", "Create Group"))
+        self.createuseraccountButton.setText(_translate("MainWindow", "SAVE"))
+        self.modifyuseraccountButton.setText(_translate("MainWindow", "SAVE"))
+        self.setexpiryButton.setText(_translate("MainWindow", "SET"))
+        self.groupnameLabel.setText(_translate("MainWindow", "Group Name:"))
+        self.creategroupButton.setText(_translate("MainWindow", "SAVE"))
+        self.userinfoLabel.setText(_translate("MainWindow", "User Information"))
+        self.iusernameLabel.setText(_translate("MainWindow", "Username:"))
+        self.userinfoButton.setText(_translate("MainWindow", "Search"))
 
 #Succedding lines from this point are now manual code. Include all imports from above!
-    #sysinfo read only display
+    #sysinfo and accountcreation read only display
         self.plainTextEdit.setReadOnly(True)
+        self.userinfoTextEdit.setReadOnly(True)
     #Table headers
         self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
         self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
@@ -745,6 +1103,7 @@ class Ui_MainWindow(object):
         self.netconfigButton.clicked.connect(self.showNetwork)
         self.processesButton.clicked.connect(self.showProcesses)
         self.sysinfoButton.clicked.connect(self.showSysinfo)
+        self.accountcreationButton.clicked.connect(self.showAccountCreation)
         #end sidebar buttons
 
         #start processes buttons
@@ -753,6 +1112,8 @@ class Ui_MainWindow(object):
         self.refreshprocessButton.clicked.connect(self.processes)
         self.killbypidButton.clicked.connect(self.killByPID)
         self.killbynameButton.clicked.connect(self.killByName)
+        self.timer3 = QtCore.QTimer()
+        self.timer3.timeout.connect(self.uptime)
         #end processes buttons
 
         #start accounts button
@@ -776,6 +1137,10 @@ class Ui_MainWindow(object):
         self.setstaticipButton.clicked.connect(self.saveStaticip)
         #end network items
 
+        #start account creation buttons
+        self.userinfoButton.clicked.connect(self.userInfo)
+        #end account creation buttons
+
     #start sidebar button clicks
     def showAccounts(self):
         self.useraccountsFrame.show()
@@ -783,6 +1148,7 @@ class Ui_MainWindow(object):
         self.processesFrame.hide()
         self.netconfigFrame.hide()
         self.dashboardFrame.hide()
+        self.accountcreationFrame.hide()
 
     def showDashboard(self):
         self.useraccountsFrame.hide()
@@ -790,6 +1156,7 @@ class Ui_MainWindow(object):
         self.processesFrame.hide()
         self.netconfigFrame.hide()
         self.dashboardFrame.show()
+        self.accountcreationFrame.hide()
 
     def showNetwork(self):
         self.useraccountsFrame.hide()
@@ -797,6 +1164,7 @@ class Ui_MainWindow(object):
         self.processesFrame.hide()
         self.netconfigFrame.show()
         self.dashboardFrame.hide()
+        self.accountcreationFrame.hide()
     
     def showProcesses(self):
         self.useraccountsFrame.hide()
@@ -804,6 +1172,8 @@ class Ui_MainWindow(object):
         self.processesFrame.show()
         self.netconfigFrame.hide()
         self.dashboardFrame.hide()
+        self.accountcreationFrame.hide()
+        self.accountcreationFrame.hide()
 
     def showSysinfo(self):
         self.useraccountsFrame.hide()
@@ -811,7 +1181,28 @@ class Ui_MainWindow(object):
         self.processesFrame.hide()
         self.netconfigFrame.hide()
         self.dashboardFrame.hide()
+        self.accountcreationFrame.hide()
+    
+    def showAccountCreation(self):
+        self.useraccountsFrame.hide()
+        self.sysinfoFrame.hide()
+        self.processesFrame.hide()
+        self.netconfigFrame.hide()
+        self.dashboardFrame.hide()
+        self.accountcreationFrame.show()
     #end sidebar button clicks
+
+    #start accountcreation button clicks
+    def userInfo(self):
+        name = self.iusernameLine.text()
+        self.cmd = "./scripts/createaccounts/accountinfo.sh {}".format(name)
+        subprocess.call(self.cmd, shell=True)
+        sysfile = "userinfo.txt"
+        with open(sysfile, 'rt') as txtfile:
+            systemI = txtfile.read()
+            self.userinfoTextEdit.setPlainText(systemI)
+
+    #end accountcreation button clicks
 
     #start processes button clicks
     def processes(self):
@@ -833,6 +1224,17 @@ class Ui_MainWindow(object):
                     self.processTable.setItem(rowPosition, i, QtWidgets.QTableWidgetItem(row[i]))
         self.processTable.show()
         self.processTable.verticalHeader().hide()
+
+    def uptime(self):
+        self.timer3.start(1000)
+        self.cmd = "./scripts/processes/uptime.sh"
+        subprocess.call(self.cmd, shell=True)
+        
+        txtfile = "uptime.txt"
+        
+        with open(txtfile, 'rt') as txtfile:
+            updatedUptime = txtfile.readline()
+            self.uptimeDynamicLabel.setText(updatedUptime)
 
     def killByPID(self):
         pid = str(self.killbypidLine.text())
@@ -990,12 +1392,14 @@ if __name__ == "__main__":
     ui = Ui_MainWindow()
     ui.setupUi(MainWindow)
     ui.processes()
+    ui.uptime()
     ui.displayDisks()
     ui.currentDate()
     ui.currentTime()
     ui.sysInfo()
     ui.staticipFrame.hide()
     ui.setdhcpButton.hide()
+    ui.userinfoTextEdit.setPlainText("")
     
     MainWindow.show()
     sys.exit(app.exec_())
