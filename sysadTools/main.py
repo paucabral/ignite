@@ -762,6 +762,7 @@ class Ui_MainWindow(object):
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
         self.passwordLine.setObjectName("passwordLine")
+        self.passwordLine.setEchoMode(QtWidgets.QLineEdit.Password)
         self.passwordLabel = QtWidgets.QLabel(self.accountcreationFrame)
         self.passwordLabel.setGeometry(QtCore.QRect(30, 80, 81, 31))
         self.passwordLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
@@ -807,6 +808,7 @@ class Ui_MainWindow(object):
         self.msecondarygroupLabel.setObjectName("msecondarygroupLabel")
         self.msecondarygroupLine = QtWidgets.QLineEdit(self.accountcreationFrame)
         self.msecondarygroupLine.setGeometry(QtCore.QRect(170, 260, 171, 31))
+        self.msecondarygroupLine.setPlaceholderText("Grp1,Grp2,Grp3,...")
         self.msecondarygroupLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
@@ -831,6 +833,7 @@ class Ui_MainWindow(object):
 "color: rgb(255,255,255)")
         self.setaccountexpiryLabel.setObjectName("setaccountexpiryLabel")
         self.edateLine = QtWidgets.QLineEdit(self.accountcreationFrame)
+        self.edateLine.setPlaceholderText("YYYY-MM-DD")
         self.edateLine.setGeometry(QtCore.QRect(170, 400, 171, 31))
         self.edateLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
@@ -1139,6 +1142,10 @@ class Ui_MainWindow(object):
 
         #start account creation buttons
         self.userinfoButton.clicked.connect(self.userInfo)
+        self.createuseraccountButton.clicked.connect(self.createUser)
+        self.modifyuseraccountButton.clicked.connect(self.modifyUser)
+        self.setexpiryButton.clicked.connect(self.setExpiry)
+        self.creategroupButton.clicked.connect(self.createGroup)
         #end account creation buttons
 
     #start sidebar button clicks
@@ -1202,6 +1209,38 @@ class Ui_MainWindow(object):
             systemI = txtfile.read()
             self.userinfoTextEdit.setPlainText(systemI)
 
+    def createUser(self):
+        username = self.usernameLine.text()
+        password = self.passwordLine.text()
+        self.cmd = "./scripts/createaccounts/createaccounts.sh {} {}".format(username, password)
+        subprocess.call(self.cmd, shell=True)
+        self.usernameLine.setText("")
+        self.passwordLine.setText("")
+
+    def modifyUser(self):
+        username = self.musernameLine.text()
+        pgroup = self.mprimarygroupLine.text()
+        sgroup = self.msecondarygroupLine.text()
+        self.cmd = "./scripts/createaccounts/modifyaccounts.sh {} {} {}".format(username, pgroup, sgroup)
+        subprocess.call(self.cmd, shell=True)
+        self.musernameLine.setText("")
+        self.mprimarygroupLine.setText("")
+        self.msecondarygroupLine.setText("")
+    
+    def setExpiry(self):
+        username = self.eusernameLine.text()
+        date = self.edateLine.text()
+        self.cmd = "./scripts/createaccounts/setaccountexpiry.sh {} {}".format(username, date)
+        subprocess.call(self.cmd, shell=True)
+        username = self.eusernameLine.setText("")
+        date = self.edateLine.setText("")
+
+    def createGroup(self):
+        groupname = self.groupnameLine.text()
+        self.cmd = "./scripts/createaccounts/creategroup.sh {}".format(groupname)
+        subprocess.call(self.cmd, shell=True)
+        self.groupnameLine.setText("")
+        
     #end accountcreation button clicks
 
     #start processes button clicks
