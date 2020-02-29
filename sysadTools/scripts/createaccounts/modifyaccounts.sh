@@ -1,3 +1,4 @@
 #!/bin/bash
 
-usermod -g $2 -G $3 $1
+usermod -g $2 $1
+usermod -G $3 $1

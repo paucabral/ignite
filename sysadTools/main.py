@@ -808,7 +808,6 @@ class Ui_MainWindow(object):
         self.msecondarygroupLabel.setObjectName("msecondarygroupLabel")
         self.msecondarygroupLine = QtWidgets.QLineEdit(self.accountcreationFrame)
         self.msecondarygroupLine.setGeometry(QtCore.QRect(170, 260, 171, 31))
-        self.msecondarygroupLine.setPlaceholderText("Grp1,Grp2,Grp3,...")
         self.msecondarygroupLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
@@ -833,7 +832,6 @@ class Ui_MainWindow(object):
 "color: rgb(255,255,255)")
         self.setaccountexpiryLabel.setObjectName("setaccountexpiryLabel")
         self.edateLine = QtWidgets.QLineEdit(self.accountcreationFrame)
-        self.edateLine.setPlaceholderText("YYYY-MM-DD")
         self.edateLine.setGeometry(QtCore.QRect(170, 400, 171, 31))
         self.edateLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
@@ -1098,6 +1096,14 @@ class Ui_MainWindow(object):
         self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
         self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
         self.disksTable.setHorizontalHeaderLabels("Filesystem;Size;Used;Available;Use%;Mounted".split(";"))
+    
+    #place holder texts
+        self.msecondarygroupLine.setPlaceholderText("Grp1,Grp2,Grp3,...")
+        self.edateLine.setPlaceholderText("YYYY-MM-DD")
+        self.ipaddressLine.setPlaceholderText("0.0.0.0")
+        self.subnetmaskLine.setPlaceholderText("0.0.0.0")
+        self.defaultgatewayLine.setPlaceholderText("0.0.0.0")
+        self.broadcastaddressLine.setPlaceholderText("0.0.0.0")
 
     #connections
         #start sidebar buttons
@@ -1200,6 +1206,13 @@ class Ui_MainWindow(object):
     #end sidebar button clicks
 
     #start accountcreation button clicks
+    def accountNotif(self, msg, username):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Notification")
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText(msg)
+        msgBox.exec()
+
     def userInfo(self):
         name = self.iusernameLine.text()
         self.cmd = "./scripts/createaccounts/accountinfo.sh {}".format(name)
@@ -1216,6 +1229,9 @@ class Ui_MainWindow(object):
         subprocess.call(self.cmd, shell=True)
         self.usernameLine.setText("")
         self.passwordLine.setText("")
+        
+        msg = "User account for {} was successfully created.".format(username)
+        self.accountNotif(msg, username)
 
     def modifyUser(self):
         username = self.musernameLine.text()
@@ -1226,24 +1242,40 @@ class Ui_MainWindow(object):
         self.musernameLine.setText("")
         self.mprimarygroupLine.setText("")
         self.msecondarygroupLine.setText("")
+
+        msg = "User account {} was modified successfully.".format(username)
+        self.accountNotif(msg, username)
     
     def setExpiry(self):
         username = self.eusernameLine.text()
         date = self.edateLine.text()
         self.cmd = "./scripts/createaccounts/setaccountexpiry.sh {} {}".format(username, date)
         subprocess.call(self.cmd, shell=True)
-        username = self.eusernameLine.setText("")
-        date = self.edateLine.setText("")
+        self.eusernameLine.setText("")
+        self.edateLine.setText("")
+
+        msg = "User account {} will now expire on {}.".format(username, date)
+        self.accountNotif(msg, username)
 
     def createGroup(self):
         groupname = self.groupnameLine.text()
         self.cmd = "./scripts/createaccounts/creategroup.sh {}".format(groupname)
         subprocess.call(self.cmd, shell=True)
         self.groupnameLine.setText("")
+
+        msg = "The group {} was successfully created.".format(groupname)
+        self.accountNotif(msg, groupname)
         
     #end accountcreation button clicks
 
     #start processes button clicks
+    def processesNotif(self, msg):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Notification")
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText(msg)
+        msgBox.exec()
+
     def processes(self):
         self.timer2.start(1000)
         self.cmd = "./scripts/processes/ps.sh"
@@ -1281,20 +1313,34 @@ class Ui_MainWindow(object):
         self.cmd = "kill -9 {}".format(pid)
         subprocess.call(self.cmd, shell=True)
         self.killbypidLine.setText("")
+
+        msg = "Process ID: {} was successfully terminated".format(pid)
+        self.processesNotif(msg)
     
     def killByName(self):
         psname = str(self.killbynameLine.text())
         self.cmd = "killall {}".format(psname)
         subprocess.call(self.cmd, shell=True)
         self.killbynameLine.setText("")
+
+        msg = "{} was successfully terminated".format(psname)
+        self.processesNotif(msg)
     #end processes button clicks
 
     #start accounts button click
+    def exportNotif(self, msg):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Notification")
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText(msg)
+        msgBox.exec()
+
     def exportAccounts(self):
         self.cmd = "./scripts/useraccounts/user_pass.sh"
         subprocess.call(self.cmd, shell=True)
 
         csvfile = "user_pass.txt"
+        txtfile = "user_pass.txt"
 
         with open(csvfile, 'rt') as csvfile:
             reader = csv.reader(csvfile, delimiter=':')
@@ -1306,9 +1352,19 @@ class Ui_MainWindow(object):
                 for i in range(len(row)):
                     self.accountsTable.setItem(rowPosition, i, QtWidgets.QTableWidgetItem(row[i]))
         self.accountsTable.show()
+
+        msg = "Comma separated values (CSV) text file for accounts list was exported to {}".format(txtfile)
+        self.exportNotif(msg)
     #end accounts button click
 
     #start dashboard items
+    def dashboardNotif(self, msg):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Notification")
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText(msg)
+        msgBox.exec()
+
     def displayDisks(self):
         self.cmd = "./scripts/dashboard/diskspace.sh"
         subprocess.call(self.cmd, shell=True)
@@ -1328,8 +1384,11 @@ class Ui_MainWindow(object):
         self.disksTable.show()
 
     def deleteDuplicates(self):
-            self.cmd = "./scripts/dashboard/duplicates.sh"
-            subprocess.call(self.cmd, shell=True)
+        self.cmd = "./scripts/dashboard/duplicates.sh"
+        subprocess.call(self.cmd, shell=True)
+        
+        msg = "Duplicate files from home directory are now being deleted."
+        self.dashboardNotif(msg)
 
     def currentDate(self):
         self.cmd = "./scripts/dashboard/currentdate.sh"
@@ -1359,28 +1418,43 @@ class Ui_MainWindow(object):
 
         self.cmd = "./scripts/dashboard/shutdowntimer.sh {} '{}' '{}'".format(minutes, main, desc)
         subprocess.call(self.cmd, shell=True)
-        self.killbypidLine.setText("")
+        self.minutesLine.setText("")
+        self.notifmainLine.setText("")
+        self.notifdescLine.setText("")
+
+        msg = "A shutdown timer of {} was set.".format(minutes)
+        shutBox = QtWidgets.QMessageBox()
+        shutBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+        shutBox.setWindowTitle("Alert!")
+        shutBox.setText(msg)
+        shutBox.setIcon(QtWidgets.QMessageBox.Warning)
+
+        if shutBox.exec_() == QtWidgets.QMessageBox.Cancel:
+            self.cmd = "shutdown -c"
+            subprocess.call(self.cmd, shell=True)
+        else:
+            pass
         
     def runBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 1"
         subprocess.call(self.cmd, shell=True)
-        self.minutesLine.setText("")
-        self.notifmainLine.setText("")
-        self.notifdescLine.setText("")
+
+        msg = "Backup is now running in the background."
+        self.dashboardNotif(msg)
     
     def extractBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 2"
         subprocess.call(self.cmd, shell=True)
-        self.minutesLine.setText("")
-        self.notifmainLine.setText("")
-        self.notifdescLine.setText("")
+
+        msg = "Backup archive is being extracted in the background."
+        self.dashboardNotif(msg)
     
     def deleteBackup(self):
         self.cmd = "./scripts/dashboard/backup.sh 3"
         subprocess.call(self.cmd, shell=True)
-        self.minutesLine.setText("")
-        self.notifmainLine.setText("")
-        self.notifdescLine.setText("")
+
+        msg = "Backup archive is now deleted."
+        self.dashboardNotif(msg)
 
     #end dashboard items
 
@@ -1395,6 +1469,13 @@ class Ui_MainWindow(object):
     #end sysinfo items
 
     #start networkconfig items
+    def networkNotif(self, msg):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Notification")
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText(msg)
+        msgBox.exec()
+
     def dhcpSettings(self):
         self.staticipFrame.hide()
         self.setdhcpButton.show()
@@ -1406,6 +1487,9 @@ class Ui_MainWindow(object):
     def saveDhcp(self):
         self.cmd = "./scripts/networkconfig/dhcp.sh"
         subprocess.call(self.cmd, shell=True)
+        
+        msg = "DHCP settings on eth0 is now configured."
+        self.networkNotif(msg)
 
     def saveStaticip(self):
         ip = str(self.ipaddressLine.text())
@@ -1420,6 +1504,9 @@ class Ui_MainWindow(object):
         self.subnetmaskLine.setText("")
         self.broadcastaddressLine.setText("")
         self.defaultgatewayLine.setText("")
+
+        msg = "IP Address: {} was assigned successfuly on eth0.".format(ip)
+        self.networkNotif(msg)
 
     #end networkconfig items
 
