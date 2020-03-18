@@ -1482,6 +1482,7 @@ class Ui_MainWindow(object):
         #start remotetools buttons
         self.searchhostsButton.clicked.connect(self.showHosts)
         self.establishsshButton.clicked.connect(self.establishSSH)
+        self.remotesetshutdowntimerButton.clicked.connect(self.remoteShutdownTimer)
         #end remotetools buttons 
 
     #start sidebar button clicks
@@ -1910,6 +1911,46 @@ class Ui_MainWindow(object):
 
         self.remoteaccountLine.setText("")
         self.remoteipaddressLine.setText("")
+
+    def remoteShutdownTimer(self):
+        txtfileA = "remoteaccount.txt"
+        with open(txtfileA, 'rt') as txtfileA:
+            remoteaccount = txtfileA.readline().splitlines()[0]
+        
+        txtfileB = "remoteip.txt"
+        with open(txtfileB, 'rt') as txtfileB:
+            remoteip = txtfileB.readline().splitlines()[0]
+        
+        rminutes = str(self.remoteminutesLine.text())
+        rmain = str(self.remotenotifmainLine.text())
+        rdesc = str(self.remotenotifdescLine.text())
+        
+
+        if rminutes == "" or rmain == "" or rdesc == "":
+            pass
+        else:
+            script = "scripts/remotetools/remoteshutdowntimer.sh {} '{}' '{}'".format(rminutes, rmain, rdesc)
+
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            print(self.cmd)
+            subprocess.call(self.cmd, shell=True)
+
+            msg = "A shutdown timer of {} was set for {}.".format(rminutes, remoteip)
+            shutBox = QtWidgets.QMessageBox()
+            shutBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+            shutBox.setWindowTitle("Alert!")
+            shutBox.setText(msg)
+            shutBox.setIcon(QtWidgets.QMessageBox.Warning)
+
+            if shutBox.exec_() == QtWidgets.QMessageBox.Cancel:
+                self.cmd = "ssh {}@{} -t 'shutdown -c'".format(remoteaccount, remoteip)
+                subprocess.call(self.cmd, shell=True)
+            else:
+                pass
+        
+        self.remoteminutesLine.setText("")
+        self.remotenotifmainLine.setText("")
+        self.remotenotifdescLine.setText("")
     #end remotetool items
 
 
