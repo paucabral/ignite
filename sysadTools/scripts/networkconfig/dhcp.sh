@@ -1,3 +1,3 @@
 #!/bin/bash
 
-dhclient -r eth0 -v
+dhclient -r $1 -v
