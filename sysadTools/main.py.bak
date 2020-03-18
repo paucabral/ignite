@@ -145,7 +145,7 @@ class Ui_MainWindow(object):
         self.netconfigButton.setIconSize(QtCore.QSize(18, 18))
         self.netconfigButton.setObjectName("netconfigButton")
         self.sysinfoButton = QtWidgets.QPushButton(self.sidebar)
-        self.sysinfoButton.setGeometry(QtCore.QRect(10, 270, 231, 41))
+        self.sysinfoButton.setGeometry(QtCore.QRect(10, 320, 231, 41))
         self.sysinfoButton.setStyleSheet("QPushButton#sysinfoButton{\n"
 "background-color: #131217;\n"
 "font: 75 12pt \"Latin Modern Sans\";\n"
@@ -213,12 +213,36 @@ class Ui_MainWindow(object):
         self.accountcreationButton.setIcon(icon6)
         self.accountcreationButton.setIconSize(QtCore.QSize(18, 18))
         self.accountcreationButton.setObjectName("accountcreationButton")
+        self.remotetoolsButton = QtWidgets.QPushButton(self.sidebar)
+        self.remotetoolsButton.setGeometry(QtCore.QRect(10, 270, 231, 41))
+        self.remotetoolsButton.setStyleSheet("QPushButton#remotetoolsButton{\n"
+"background-color: #131217;\n"
+"font: 75 12pt \"Latin Modern Sans\";\n"
+"font-weight: bold;\n"
+"color: rgb(255, 255, 255);\n"
+"border-style: outset;\n"
+"border-radius: 13px;\n"
+"text-align: left;\n"
+"padding-left: 20px;\n"
+"}\n"
+"\n"
+"QPushButton#remotetoolsButton:hover{\n"
+"background-color: #1d1c23;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        icon7 = QtGui.QIcon()
+        icon7.addPixmap(QtGui.QPixmap("assets/sidebar_buttons/remotetools.png"), QtGui.QIcon.Normal, QtGui.QIcon.Off)
+        self.remotetoolsButton.setIcon(icon7)
+        self.remotetoolsButton.setIconSize(QtCore.QSize(18, 18))
+        self.remotetoolsButton.setObjectName("remotetoolsButton")
         self.dashboardButton.raise_()
         self.processesButton.raise_()
         self.netconfigButton.raise_()
         self.accountconfigButton.raise_()
         self.sysinfoButton.raise_()
         self.accountcreationButton.raise_()
+        self.remotetoolsButton.raise_()
         self.dashboardFrame = QtWidgets.QFrame(self.centralwidget)
         self.dashboardFrame.setGeometry(QtCore.QRect(250, 90, 781, 491))
         self.dashboardFrame.setStyleSheet("background-color: #191a1f")
@@ -226,29 +250,29 @@ class Ui_MainWindow(object):
         self.dashboardFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.dashboardFrame.setObjectName("dashboardFrame")
         self.clock = QtWidgets.QFrame(self.dashboardFrame)
-        self.clock.setGeometry(QtCore.QRect(20, 20, 401, 171))
+        self.clock.setGeometry(QtCore.QRect(20, 20, 421, 171))
         self.clock.setStyleSheet("background-color: #121318")
         self.clock.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.clock.setFrameShadow(QtWidgets.QFrame.Raised)
         self.clock.setObjectName("clock")
         self.date = QtWidgets.QLabel(self.clock)
-        self.date.setGeometry(QtCore.QRect(20, 10, 381, 61))
+        self.date.setGeometry(QtCore.QRect(20, 10, 391, 61))
         self.date.setStyleSheet("font: 36pt \"Latin Modern Sans\";\n"
 "color: rgb(211, 215, 207)")
         self.date.setObjectName("date")
         self.time = QtWidgets.QLabel(self.clock)
-        self.time.setGeometry(QtCore.QRect(50, 80, 321, 61))
+        self.time.setGeometry(QtCore.QRect(50, 80, 331, 61))
         self.time.setStyleSheet("font: 38pt \"Latin Modern Sans\";\n"
 "color: rgb(211, 215, 207)")
         self.time.setObjectName("time")
         self.calendar = QtWidgets.QFrame(self.dashboardFrame)
-        self.calendar.setGeometry(QtCore.QRect(440, 20, 311, 171))
+        self.calendar.setGeometry(QtCore.QRect(460, 20, 291, 171))
         self.calendar.setStyleSheet("background-color: #121318")
         self.calendar.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.calendar.setFrameShadow(QtWidgets.QFrame.Raised)
         self.calendar.setObjectName("calendar")
         self.calendarWidget = QtWidgets.QCalendarWidget(self.calendar)
-        self.calendarWidget.setGeometry(QtCore.QRect(20, 0, 272, 171))
+        self.calendarWidget.setGeometry(QtCore.QRect(10, 0, 272, 171))
         font = QtGui.QFont()
         font.setFamily("Latin Modern Sans")
         font.setPointSize(8)
@@ -521,13 +545,14 @@ class Ui_MainWindow(object):
 "")
         self.refreshprocessButton.setObjectName("refreshprocessButton")
         self.uptimeLabel = QtWidgets.QLabel(self.processesFrame)
-        self.uptimeLabel.setGeometry(QtCore.QRect(140, 13, 61, 31))
+        self.uptimeLabel.setGeometry(QtCore.QRect(140, 20, 61, 31))
         self.uptimeLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "font-weight: bold;\n"
+"background-color: #191a1f;\n"
 "color: rgb(255,255,255)")
         self.uptimeLabel.setObjectName("uptimeLabel")
         self.uptimeDynamicLabel = QtWidgets.QLabel(self.processesFrame)
-        self.uptimeDynamicLabel.setGeometry(QtCore.QRect(210, 26, 441, 33))
+        self.uptimeDynamicLabel.setGeometry(QtCore.QRect(210, 30, 441, 21))
         self.uptimeDynamicLabel.setStyleSheet("font: 13pt \"Latin Modern Sans\";\n"
 "background-color: #191a1f;\n"
 "color: rgb(255,255,255)")
@@ -605,49 +630,49 @@ class Ui_MainWindow(object):
         self.dhcpRadioButton.setIconSize(QtCore.QSize(16, 16))
         self.dhcpRadioButton.setObjectName("dhcpRadioButton")
         self.staticipFrame = QtWidgets.QFrame(self.netconfigFrame)
-        self.staticipFrame.setGeometry(QtCore.QRect(180, 140, 421, 291))
+        self.staticipFrame.setGeometry(QtCore.QRect(180, 130, 421, 321))
         self.staticipFrame.setStyleSheet("background-color: #121318")
         self.staticipFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
         self.staticipFrame.setFrameShadow(QtWidgets.QFrame.Raised)
         self.staticipFrame.setObjectName("staticipFrame")
         self.broadcastaddressLine = QtWidgets.QLineEdit(self.staticipFrame)
-        self.broadcastaddressLine.setGeometry(QtCore.QRect(180, 130, 201, 24))
+        self.broadcastaddressLine.setGeometry(QtCore.QRect(180, 170, 201, 24))
         self.broadcastaddressLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
         self.broadcastaddressLine.setText("")
         self.broadcastaddressLine.setObjectName("broadcastaddressLine")
         self.subnetmaskLine = QtWidgets.QLineEdit(self.staticipFrame)
-        self.subnetmaskLine.setGeometry(QtCore.QRect(180, 80, 201, 24))
+        self.subnetmaskLine.setGeometry(QtCore.QRect(180, 120, 201, 24))
         self.subnetmaskLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
         self.subnetmaskLine.setText("")
         self.subnetmaskLine.setObjectName("subnetmaskLine")
         self.broadcastaddressLabel = QtWidgets.QLabel(self.staticipFrame)
-        self.broadcastaddressLabel.setGeometry(QtCore.QRect(30, 130, 141, 21))
+        self.broadcastaddressLabel.setGeometry(QtCore.QRect(30, 160, 141, 21))
         self.broadcastaddressLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "color: rgb(255,255,255)")
         self.broadcastaddressLabel.setObjectName("broadcastaddressLabel")
         self.ipaddressLabel = QtWidgets.QLabel(self.staticipFrame)
-        self.ipaddressLabel.setGeometry(QtCore.QRect(90, 30, 81, 21))
+        self.ipaddressLabel.setGeometry(QtCore.QRect(90, 70, 81, 21))
         self.ipaddressLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "color: rgb(255,255,255)")
         self.ipaddressLabel.setObjectName("ipaddressLabel")
         self.ipaddressLine = QtWidgets.QLineEdit(self.staticipFrame)
-        self.ipaddressLine.setGeometry(QtCore.QRect(180, 30, 201, 24))
+        self.ipaddressLine.setGeometry(QtCore.QRect(180, 70, 201, 24))
         self.ipaddressLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
         self.ipaddressLine.setText("")
         self.ipaddressLine.setObjectName("ipaddressLine")
         self.subnetmaskLabel = QtWidgets.QLabel(self.staticipFrame)
-        self.subnetmaskLabel.setGeometry(QtCore.QRect(70, 80, 101, 21))
+        self.subnetmaskLabel.setGeometry(QtCore.QRect(70, 120, 101, 21))
         self.subnetmaskLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "color: rgb(255,255,255)")
         self.subnetmaskLabel.setObjectName("subnetmaskLabel")
         self.setstaticipButton = QtWidgets.QPushButton(self.staticipFrame)
-        self.setstaticipButton.setGeometry(QtCore.QRect(180, 230, 201, 31))
+        self.setstaticipButton.setGeometry(QtCore.QRect(180, 270, 201, 31))
         self.setstaticipButton.setStyleSheet("QPushButton#setstaticipButton{\n"
 "background-color: rgb(136, 138, 133);\n"
 "font: 87 12pt \"Latin Modern Sans\";\n"
@@ -663,17 +688,29 @@ class Ui_MainWindow(object):
 "")
         self.setstaticipButton.setObjectName("setstaticipButton")
         self.defaultgatewayLine = QtWidgets.QLineEdit(self.staticipFrame)
-        self.defaultgatewayLine.setGeometry(QtCore.QRect(180, 180, 201, 24))
+        self.defaultgatewayLine.setGeometry(QtCore.QRect(180, 220, 201, 24))
         self.defaultgatewayLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
         self.defaultgatewayLine.setText("")
         self.defaultgatewayLine.setObjectName("defaultgatewayLine")
         self.defaultgatewayLabel = QtWidgets.QLabel(self.staticipFrame)
-        self.defaultgatewayLabel.setGeometry(QtCore.QRect(40, 180, 121, 21))
+        self.defaultgatewayLabel.setGeometry(QtCore.QRect(40, 220, 121, 21))
         self.defaultgatewayLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
 "color: rgb(255,255,255)")
         self.defaultgatewayLabel.setObjectName("defaultgatewayLabel")
+        self.sinterfaceLine = QtWidgets.QLineEdit(self.staticipFrame)
+        self.sinterfaceLine.setGeometry(QtCore.QRect(180, 20, 201, 24))
+        self.sinterfaceLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.sinterfaceLine.setText("")
+        self.sinterfaceLine.setObjectName("sinterfaceLine")
+        self.sinterfaceLabel = QtWidgets.QLabel(self.staticipFrame)
+        self.sinterfaceLabel.setGeometry(QtCore.QRect(100, 20, 71, 21))
+        self.sinterfaceLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(255,255,255)")
+        self.sinterfaceLabel.setObjectName("sinterfaceLabel")
         self.staticipRadioButton = QtWidgets.QRadioButton(self.netconfigFrame)
         self.staticipRadioButton.setGeometry(QtCore.QRect(150, 90, 231, 31))
         self.staticipRadioButton.setStyleSheet("QRadioButton#staticipRadioButton{\n"
@@ -696,7 +733,7 @@ class Ui_MainWindow(object):
 "}")
         self.staticipRadioButton.setObjectName("staticipRadioButton")
         self.setdhcpButton = QtWidgets.QPushButton(self.netconfigFrame)
-        self.setdhcpButton.setGeometry(QtCore.QRect(420, 60, 201, 31))
+        self.setdhcpButton.setGeometry(QtCore.QRect(530, 60, 151, 31))
         self.setdhcpButton.setStyleSheet("QPushButton#setdhcpButton{\n"
 "background-color: rgb(136, 138, 133);\n"
 "font: 87 12pt \"Latin Modern Sans\";\n"
@@ -711,6 +748,18 @@ class Ui_MainWindow(object):
 "}\n"
 "")
         self.setdhcpButton.setObjectName("setdhcpButton")
+        self.dinterfaceLabel = QtWidgets.QLabel(self.netconfigFrame)
+        self.dinterfaceLabel.setGeometry(QtCore.QRect(260, 60, 71, 31))
+        self.dinterfaceLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(255,255,255)")
+        self.dinterfaceLabel.setObjectName("dinterfaceLabel")
+        self.dinterfaceLine = QtWidgets.QLineEdit(self.netconfigFrame)
+        self.dinterfaceLine.setGeometry(QtCore.QRect(340, 60, 161, 31))
+        self.dinterfaceLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.dinterfaceLine.setText("")
+        self.dinterfaceLine.setObjectName("dinterfaceLine")
         self.sysinfoFrame = QtWidgets.QFrame(self.centralwidget)
         self.sysinfoFrame.setGeometry(QtCore.QRect(250, 90, 1441, 491))
         self.sysinfoFrame.setStyleSheet("background-color: #191a1f")
@@ -762,7 +811,6 @@ class Ui_MainWindow(object):
 "background-color: #212025;\n"
 "color: rgb(255,255,255)")
         self.passwordLine.setObjectName("passwordLine")
-        self.passwordLine.setEchoMode(QtWidgets.QLineEdit.Password)
         self.passwordLabel = QtWidgets.QLabel(self.accountcreationFrame)
         self.passwordLabel.setGeometry(QtCore.QRect(30, 80, 81, 31))
         self.passwordLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
@@ -776,7 +824,7 @@ class Ui_MainWindow(object):
 "color: rgb(255,255,255)")
         self.mprimarygroupLine.setObjectName("mprimarygroupLine")
         self.modifyuseraccountLabel = QtWidgets.QLabel(self.accountcreationFrame)
-        self.modifyuseraccountLabel.setGeometry(QtCore.QRect(30, 150, 211, 31))
+        self.modifyuseraccountLabel.setGeometry(QtCore.QRect(30, 150, 201, 31))
         self.modifyuseraccountLabel.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
 "font-weight: bold;\n"
 "background-color: #191a1f;\n"
@@ -1004,23 +1052,279 @@ class Ui_MainWindow(object):
         self.userinfoTextEdit = QtWidgets.QPlainTextEdit(self.accountcreationFrame)
         self.userinfoTextEdit.setGeometry(QtCore.QRect(380, 200, 361, 261))
         font = QtGui.QFont()
-        font.setFamily("Courier 5 Pitch")
-        font.setPointSize(5)
+        font.setFamily("Courier 10 Pitch")
+        font.setPointSize(10)
         font.setBold(False)
         font.setItalic(False)
-        font.setWeight(20)
+        font.setWeight(50)
         self.userinfoTextEdit.setFont(font)
         self.userinfoTextEdit.setStyleSheet("background-color: rgb(8, 5, 13);\n"
 "color: rgb(211, 215, 207);\n"
 "font: 10pt \"Courier 10 Pitch\";")
         self.userinfoTextEdit.setPlainText("")
         self.userinfoTextEdit.setObjectName("userinfoTextEdit")
-        self.netconfigFrame.raise_()
+        self.remotetoolsFrame = QtWidgets.QFrame(self.centralwidget)
+        self.remotetoolsFrame.setGeometry(QtCore.QRect(250, 90, 781, 491))
+        self.remotetoolsFrame.setStyleSheet("background-color: #191a1f")
+        self.remotetoolsFrame.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.remotetoolsFrame.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.remotetoolsFrame.setObjectName("remotetoolsFrame")
+        self.remoteShutdown = QtWidgets.QFrame(self.remotetoolsFrame)
+        self.remoteShutdown.setGeometry(QtCore.QRect(20, 210, 361, 191))
+        self.remoteShutdown.setStyleSheet("background-color: #121318")
+        self.remoteShutdown.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.remoteShutdown.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.remoteShutdown.setObjectName("remoteShutdown")
+        self.remoteshutdownHeader = QtWidgets.QLabel(self.remoteShutdown)
+        self.remoteshutdownHeader.setGeometry(QtCore.QRect(20, 10, 211, 21))
+        self.remoteshutdownHeader.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remoteshutdownHeader.setObjectName("remoteshutdownHeader")
+        self.remoteminutesbsLabel = QtWidgets.QLabel(self.remoteShutdown)
+        self.remoteminutesbsLabel.setGeometry(QtCore.QRect(20, 40, 191, 16))
+        self.remoteminutesbsLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remoteminutesbsLabel.setObjectName("remoteminutesbsLabel")
+        self.remotenotifmainLabel = QtWidgets.QLabel(self.remoteShutdown)
+        self.remotenotifmainLabel.setGeometry(QtCore.QRect(20, 70, 191, 16))
+        self.remotenotifmainLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remotenotifmainLabel.setObjectName("remotenotifmainLabel")
+        self.remotenotifdescLabel = QtWidgets.QLabel(self.remoteShutdown)
+        self.remotenotifdescLabel.setGeometry(QtCore.QRect(20, 100, 191, 21))
+        self.remotenotifdescLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remotenotifdescLabel.setObjectName("remotenotifdescLabel")
+        self.remoteminutesLine = QtWidgets.QLineEdit(self.remoteShutdown)
+        self.remoteminutesLine.setGeometry(QtCore.QRect(210, 40, 61, 24))
+        self.remoteminutesLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.remoteminutesLine.setObjectName("remoteminutesLine")
+        self.remotenotifmainLine = QtWidgets.QLineEdit(self.remoteShutdown)
+        self.remotenotifmainLine.setGeometry(QtCore.QRect(210, 70, 131, 24))
+        self.remotenotifmainLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.remotenotifmainLine.setObjectName("remotenotifmainLine")
+        self.remotenotifdescLine = QtWidgets.QLineEdit(self.remoteShutdown)
+        self.remotenotifdescLine.setGeometry(QtCore.QRect(210, 100, 131, 24))
+        self.remotenotifdescLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.remotenotifdescLine.setObjectName("remotenotifdescLine")
+        self.remoteminutesLabel = QtWidgets.QLabel(self.remoteShutdown)
+        self.remoteminutesLabel.setGeometry(QtCore.QRect(280, 40, 61, 16))
+        self.remoteminutesLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remoteminutesLabel.setObjectName("remoteminutesLabel")
+        self.remotesetshutdowntimerButton = QtWidgets.QPushButton(self.remoteShutdown)
+        self.remotesetshutdowntimerButton.setGeometry(QtCore.QRect(20, 140, 321, 31))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.remotesetshutdowntimerButton.setFont(font)
+        self.remotesetshutdowntimerButton.setStyleSheet("QPushButton#remotesetshutdowntimerButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 12pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#remotesetshutdowntimerButton:hover{\n"
+"background-color: #c237b6;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.remotesetshutdowntimerButton.setObjectName("remotesetshutdowntimerButton")
+        self.remoteHost = QtWidgets.QFrame(self.remotetoolsFrame)
+        self.remoteHost.setGeometry(QtCore.QRect(20, 30, 361, 161))
+        self.remoteHost.setStyleSheet("background-color: #121318")
+        self.remoteHost.setFrameShape(QtWidgets.QFrame.StyledPanel)
+        self.remoteHost.setFrameShadow(QtWidgets.QFrame.Raised)
+        self.remoteHost.setObjectName("remoteHost")
+        self.remotehostHeader = QtWidgets.QLabel(self.remoteHost)
+        self.remotehostHeader.setGeometry(QtCore.QRect(20, 10, 161, 21))
+        self.remotehostHeader.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remotehostHeader.setObjectName("remotehostHeader")
+        self.remoteaccountLabel = QtWidgets.QLabel(self.remoteHost)
+        self.remoteaccountLabel.setGeometry(QtCore.QRect(20, 40, 91, 16))
+        self.remoteaccountLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remoteaccountLabel.setObjectName("remoteaccountLabel")
+        self.remoteipaddressLabel = QtWidgets.QLabel(self.remoteHost)
+        self.remoteipaddressLabel.setGeometry(QtCore.QRect(20, 70, 91, 21))
+        self.remoteipaddressLabel.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.remoteipaddressLabel.setObjectName("remoteipaddressLabel")
+        self.remoteipaddressLine = QtWidgets.QLineEdit(self.remoteHost)
+        self.remoteipaddressLine.setGeometry(QtCore.QRect(120, 70, 221, 24))
+        self.remoteipaddressLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.remoteipaddressLine.setObjectName("remoteipaddressLine")
+        self.establishsshButton = QtWidgets.QPushButton(self.remoteHost)
+        self.establishsshButton.setGeometry(QtCore.QRect(20, 110, 321, 31))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(12)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.establishsshButton.setFont(font)
+        self.establishsshButton.setStyleSheet("QPushButton#establishsshButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 12pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#establishsshButton:hover{\n"
+"background-color: #c237b6;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.establishsshButton.setObjectName("establishsshButton")
+        self.remoteaccountLine = QtWidgets.QLineEdit(self.remoteHost)
+        self.remoteaccountLine.setGeometry(QtCore.QRect(120, 40, 221, 24))
+        self.remoteaccountLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.remoteaccountLine.setObjectName("remoteaccountLine")
+        self.remotedeletebackupButton = QtWidgets.QPushButton(self.remotetoolsFrame)
+        self.remotedeletebackupButton.setGeometry(QtCore.QRect(280, 420, 101, 31))
+        self.remotedeletebackupButton.setStyleSheet("QPushButton#remotedeletebackupButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 7.5pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#remotedeletebackupButton:hover{\n"
+"background-color: #e1184d;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.remotedeletebackupButton.setObjectName("remotedeletebackupButton")
+        self.remoteextractbackupButton = QtWidgets.QPushButton(self.remotetoolsFrame)
+        self.remoteextractbackupButton.setGeometry(QtCore.QRect(150, 420, 101, 31))
+        self.remoteextractbackupButton.setStyleSheet("QPushButton#remoteextractbackupButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 7.5pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#remoteextractbackupButton:hover{\n"
+"background-color: #2da576;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.remoteextractbackupButton.setObjectName("remoteextractbackupButton")
+        self.remoterunbackupButton = QtWidgets.QPushButton(self.remotetoolsFrame)
+        self.remoterunbackupButton.setGeometry(QtCore.QRect(20, 420, 101, 31))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(8)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.remoterunbackupButton.setFont(font)
+        self.remoterunbackupButton.setStyleSheet("QPushButton#remoterunbackupButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 7.5pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#remoterunbackupButton:hover{\n"
+"background-color: #1483fe;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.remoterunbackupButton.setObjectName("remoterunbackupButton")
+        self.availabledevicesHeader = QtWidgets.QLabel(self.remotetoolsFrame)
+        self.availabledevicesHeader.setGeometry(QtCore.QRect(400, 10, 161, 31))
+        self.availabledevicesHeader.setStyleSheet("font: 16pt \"Latin Modern Sans\";\n"
+"color: rgb(211, 215, 207)")
+        self.availabledevicesHeader.setObjectName("availabledevicesHeader")
+        self.hostsTable = QtWidgets.QTableWidget(self.remotetoolsFrame)
+        self.hostsTable.setGeometry(QtCore.QRect(400, 50, 351, 201))
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Ignored)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.hostsTable.sizePolicy().hasHeightForWidth())
+        self.hostsTable.setSizePolicy(sizePolicy)
+        self.hostsTable.setStyleSheet("background-color: rgb(85, 87, 83);\n"
+"color: white;\n"
+"font: 10pt \"Latin Modern Sans\";")
+        self.hostsTable.setEditTriggers(QtWidgets.QAbstractItemView.SelectedClicked)
+        self.hostsTable.setRowCount(0)
+        self.hostsTable.setColumnCount(3)
+        self.hostsTable.setObjectName("hostsTable")
+        self.hostinformationTextEdit = QtWidgets.QPlainTextEdit(self.remotetoolsFrame)
+        self.hostinformationTextEdit.setGeometry(QtCore.QRect(400, 260, 351, 201))
+        font = QtGui.QFont()
+        font.setFamily("Courier 10 Pitch")
+        font.setPointSize(10)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(50)
+        self.hostinformationTextEdit.setFont(font)
+        self.hostinformationTextEdit.setStyleSheet("background-color: rgb(8, 5, 13);\n"
+"color: rgb(211, 215, 207);\n"
+"font: 10pt \"Courier 10 Pitch\";")
+        self.hostinformationTextEdit.setPlainText("")
+        self.hostinformationTextEdit.setObjectName("hostinformationTextEdit")
+        self.searchhostsButton = QtWidgets.QPushButton(self.remotetoolsFrame)
+        self.searchhostsButton.setGeometry(QtCore.QRect(680, 10, 71, 31))
+        font = QtGui.QFont()
+        font.setFamily("Latin Modern Sans")
+        font.setPointSize(9)
+        font.setBold(False)
+        font.setItalic(False)
+        font.setWeight(10)
+        font.setKerning(True)
+        self.searchhostsButton.setFont(font)
+        self.searchhostsButton.setStyleSheet("QPushButton#searchhostsButton{\n"
+"background-color: rgb(136, 138, 133);\n"
+"font: 87 9pt \"Latin Modern Sans\";\n"
+"color: rgb(0, 0, 0);\n"
+"border-style: outset;\n"
+"border-radius: 10px;\n"
+"}\n"
+"\n"
+"QPushButton#searchhostsButton:hover{\n"
+"background-color: #c237b6;\n"
+"color: rgb(255, 255, 255);\n"
+"}\n"
+"")
+        self.searchhostsButton.setObjectName("searchhostsButton")
+        self.interfaceLine = QtWidgets.QLineEdit(self.remotetoolsFrame)
+        self.interfaceLine.setGeometry(QtCore.QRect(560, 10, 111, 31))
+        self.interfaceLine.setStyleSheet("font: 12pt \"Latin Modern Sans\";\n"
+"background-color: #212025;\n"
+"color: rgb(255,255,255)")
+        self.interfaceLine.setObjectName("interfaceLine")
         self.useraccountsFrame.raise_()
         self.sysinfoFrame.raise_()
         self.sidebar.raise_()
-        self.processesFrame.raise_()
         self.accountcreationFrame.raise_()
+        self.processesFrame.raise_()
+        self.remotetoolsFrame.raise_()
+        self.netconfigFrame.raise_()
         self.dashboardFrame.raise_()
         self.header.raise_()
         MainWindow.setCentralWidget(self.centralwidget)
@@ -1039,6 +1343,7 @@ class Ui_MainWindow(object):
         self.sysinfoButton.setText(_translate("MainWindow", "  System Information"))
         self.accountconfigButton.setText(_translate("MainWindow", "  User Accounts"))
         self.accountcreationButton.setText(_translate("MainWindow", "  Account Creation"))
+        self.remotetoolsButton.setText(_translate("MainWindow", "  Remote Tools"))
         self.date.setText(_translate("MainWindow", "Tue Feb 11 2020"))
         self.time.setText(_translate("MainWindow", "00:24:32 PST"))
         self.runbackupButton.setText(_translate("MainWindow", "RUN BACKUP"))
@@ -1066,8 +1371,10 @@ class Ui_MainWindow(object):
         self.subnetmaskLabel.setText(_translate("MainWindow", "Subnet Mask:"))
         self.setstaticipButton.setText(_translate("MainWindow", "Save Configuration"))
         self.defaultgatewayLabel.setText(_translate("MainWindow", "Default Gateway:"))
+        self.sinterfaceLabel.setText(_translate("MainWindow", "Interface:"))
         self.staticipRadioButton.setText(_translate("MainWindow", "Static IP Configuration"))
         self.setdhcpButton.setText(_translate("MainWindow", "Save Configuration"))
+        self.dinterfaceLabel.setText(_translate("MainWindow", "Interface:"))
         self.createuseraccountLabel.setText(_translate("MainWindow", "Create User Account"))
         self.usernameLabel.setText(_translate("MainWindow", "Username:"))
         self.passwordLabel.setText(_translate("MainWindow", "Password:"))
@@ -1087,6 +1394,21 @@ class Ui_MainWindow(object):
         self.userinfoLabel.setText(_translate("MainWindow", "User Information"))
         self.iusernameLabel.setText(_translate("MainWindow", "Username:"))
         self.userinfoButton.setText(_translate("MainWindow", "Search"))
+        self.remoteshutdownHeader.setText(_translate("MainWindow", "Set Shutdown Timer"))
+        self.remoteminutesbsLabel.setText(_translate("MainWindow", "Minutes before shutdown: "))
+        self.remotenotifmainLabel.setText(_translate("MainWindow", "Notification (main text):"))
+        self.remotenotifdescLabel.setText(_translate("MainWindow", "Notification (description):"))
+        self.remoteminutesLabel.setText(_translate("MainWindow", "minutes"))
+        self.remotesetshutdowntimerButton.setText(_translate("MainWindow", "SET"))
+        self.remotehostHeader.setText(_translate("MainWindow", "Remote Host"))
+        self.remoteaccountLabel.setText(_translate("MainWindow", "Account:"))
+        self.remoteipaddressLabel.setText(_translate("MainWindow", "IP Address:"))
+        self.establishsshButton.setText(_translate("MainWindow", "ESTABLISH SSH CONNECTION"))
+        self.remotedeletebackupButton.setText(_translate("MainWindow", "DELETE BACKUP"))
+        self.remoteextractbackupButton.setText(_translate("MainWindow", "EXTRACT BACKUP"))
+        self.remoterunbackupButton.setText(_translate("MainWindow", "RUN BACKUP"))
+        self.availabledevicesHeader.setText(_translate("MainWindow", "Recogized Hosts"))
+        self.searchhostsButton.setText(_translate("MainWindow", "SEARCH"))
 
 #Succedding lines from this point are now manual code. Include all imports from above!
     #sysinfo and accountcreation read only display
@@ -1096,6 +1418,7 @@ class Ui_MainWindow(object):
         self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
         self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
         self.disksTable.setHorizontalHeaderLabels("Filesystem;Size;Used;Available;Use%;Mounted".split(";"))
+        self.hostsTable.setHorizontalHeaderLabels("IP Address;MAC Address;Hostname".split(";"))
     
     #place holder texts
         self.msecondarygroupLine.setPlaceholderText("Grp1,Grp2,Grp3,...")
@@ -1104,6 +1427,7 @@ class Ui_MainWindow(object):
         self.subnetmaskLine.setPlaceholderText("0.0.0.0")
         self.defaultgatewayLine.setPlaceholderText("0.0.0.0")
         self.broadcastaddressLine.setPlaceholderText("0.0.0.0")
+        self.interfaceLine.setPlaceholderText("Enter interface")
 
     #connections
         #start sidebar buttons
@@ -1113,6 +1437,7 @@ class Ui_MainWindow(object):
         self.processesButton.clicked.connect(self.showProcesses)
         self.sysinfoButton.clicked.connect(self.showSysinfo)
         self.accountcreationButton.clicked.connect(self.showAccountCreation)
+        self.remotetoolsButton.clicked.connect(self.showRemoteTools)
         #end sidebar buttons
 
         #start processes buttons
@@ -1154,6 +1479,15 @@ class Ui_MainWindow(object):
         self.creategroupButton.clicked.connect(self.createGroup)
         #end account creation buttons
 
+        #start remotetools buttons
+        self.searchhostsButton.clicked.connect(self.showHosts)
+        self.establishsshButton.clicked.connect(self.establishSSH)
+        self.remotesetshutdowntimerButton.clicked.connect(self.remoteShutdownTimer)
+        self.remoterunbackupButton.clicked.connect(self.remoteRunBackup)
+        self.remoteextractbackupButton.clicked.connect(self.remoteExtractBackup)
+        self.remotedeletebackupButton.clicked.connect(self.remoteDeleteBackup)
+        #end remotetools buttons 
+
     #start sidebar button clicks
     def showAccounts(self):
         self.useraccountsFrame.show()
@@ -1162,6 +1496,7 @@ class Ui_MainWindow(object):
         self.netconfigFrame.hide()
         self.dashboardFrame.hide()
         self.accountcreationFrame.hide()
+        self.remotetoolsFrame.hide()
 
     def showDashboard(self):
         self.useraccountsFrame.hide()
@@ -1170,6 +1505,7 @@ class Ui_MainWindow(object):
         self.netconfigFrame.hide()
         self.dashboardFrame.show()
         self.accountcreationFrame.hide()
+        self.remotetoolsFrame.hide()
 
     def showNetwork(self):
         self.useraccountsFrame.hide()
@@ -1178,6 +1514,7 @@ class Ui_MainWindow(object):
         self.netconfigFrame.show()
         self.dashboardFrame.hide()
         self.accountcreationFrame.hide()
+        self.remotetoolsFrame.hide()
     
     def showProcesses(self):
         self.useraccountsFrame.hide()
@@ -1187,6 +1524,7 @@ class Ui_MainWindow(object):
         self.dashboardFrame.hide()
         self.accountcreationFrame.hide()
         self.accountcreationFrame.hide()
+        self.remotetoolsFrame.hide()
 
     def showSysinfo(self):
         self.useraccountsFrame.hide()
@@ -1195,6 +1533,7 @@ class Ui_MainWindow(object):
         self.netconfigFrame.hide()
         self.dashboardFrame.hide()
         self.accountcreationFrame.hide()
+        self.remotetoolsFrame.hide()
     
     def showAccountCreation(self):
         self.useraccountsFrame.hide()
@@ -1203,6 +1542,16 @@ class Ui_MainWindow(object):
         self.netconfigFrame.hide()
         self.dashboardFrame.hide()
         self.accountcreationFrame.show()
+        self.remotetoolsFrame.hide()
+
+    def showRemoteTools(self):
+        self.remotetoolsFrame.show()
+        self.useraccountsFrame.hide()
+        self.sysinfoFrame.hide()
+        self.processesFrame.hide()
+        self.netconfigFrame.hide()
+        self.dashboardFrame.hide()
+        self.accountcreationFrame.hide()
     #end sidebar button clicks
 
     #start accountcreation button clicks
@@ -1478,37 +1827,199 @@ class Ui_MainWindow(object):
 
     def dhcpSettings(self):
         self.staticipFrame.hide()
+        self.dinterfaceLine.show()
+        self.dinterfaceLabel.show()
         self.setdhcpButton.show()
 
     def staticipSettings(self):
         self.staticipFrame.show()
         self.setdhcpButton.hide()
+        self.dinterfaceLine.hide()
+        self.dinterfaceLabel.hide()
     
     def saveDhcp(self):
-        self.cmd = "./scripts/networkconfig/dhcp.sh"
+        dinterface = str(self.dinterfaceLine.text())
+        self.cmd = "./scripts/networkconfig/dhcp.sh {}".format(dinterface)
         subprocess.call(self.cmd, shell=True)
         
-        msg = "DHCP settings on eth0 is now configured."
+        msg = "DHCP settings on {} is now configured.".format(dinterface)
         self.networkNotif(msg)
+        self.dinterfaceLine.setText("")
 
     def saveStaticip(self):
         ip = str(self.ipaddressLine.text())
         sm = str(self.subnetmaskLine.text())
         ba = str(self.broadcastaddressLine.text())
         dg = str(self.defaultgatewayLine.text())
+        sinterface = str(self.sinterfaceLine.text())
         
-        self.cmd = "./scripts/networkconfig/staticipconfig.sh {} {} {} {}".format(ip, sm, ba, dg)
+        self.cmd = "./scripts/networkconfig/staticipconfig.sh {} {} {} {} {}".format(ip, sm, ba, dg, sinterface)
         subprocess.call(self.cmd, shell=True)
 
         self.ipaddressLine.setText("")
         self.subnetmaskLine.setText("")
         self.broadcastaddressLine.setText("")
         self.defaultgatewayLine.setText("")
+        self.sinterfaceLine.setText("")
 
-        msg = "IP Address: {} was assigned successfuly on eth0.".format(ip)
+        msg = "IP Address: {} was assigned successfuly on {}.".format(ip, sinterface)
         self.networkNotif(msg)
 
     #end networkconfig items
+
+    #start remotetool items
+    def remoteNotif(self, msg):
+        msgBox = QtWidgets.QMessageBox()
+        msgBox.setWindowTitle("Notification")
+        msgBox.setIcon(QtWidgets.QMessageBox.Information)
+        msgBox.setText(msg)
+        msgBox.exec()
+
+    def showHosts(self):
+        interface = str(self.interfaceLine.text())
+
+        self.cmd = "./scripts/remotetools/recognizedhosts.sh {}".format(interface)
+        subprocess.call(self.cmd, shell=True)
+
+        csvfile = "recognized_hosts.txt"
+
+        with open(csvfile, 'rt') as csvfile:
+            reader = csv.reader(csvfile, delimiter=',')
+            self.hostsTable.setRowCount(0)
+            for row in reader:
+                rowPosition = self.hostsTable.rowCount()
+                self.hostsTable.insertRow(rowPosition)
+
+                for i in range(len(row)):
+                    self.hostsTable.setItem(rowPosition, i, QtWidgets.QTableWidgetItem(row[i]))
+        self.hostsTable.show()
+        self.interfaceLine.setText("")
+
+    def establishSSH(self):
+        remoteAccount = str(self.remoteaccountLine.text())
+        remoteIP = str(self.remoteipaddressLine.text())
+
+        if remoteAccount == "":
+            pass
+
+        else:
+            self.cmd = "./scripts/remotetools/saveaccount.sh {}".format(remoteAccount)
+            subprocess.call(self.cmd, shell=True)
+            
+            self.cmd = "./scripts/remotetools/saveip.sh {}".format(remoteIP)
+            subprocess.call(self.cmd, shell=True)
+            
+            msg = "SSH settings saved successfully. You may now use the tools below."
+            self.remoteNotif(msg)
+
+        self.remoteaccountLine.setText("")
+        self.remoteipaddressLine.setText("")
+
+    def remoteShutdownTimer(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+        
+            rminutes = str(self.remoteminutesLine.text())
+            rmain = str(self.remotenotifmainLine.text())
+            rdesc = str(self.remotenotifdescLine.text())
+        
+
+            if rminutes == "" or rmain == "" or rdesc == "":
+                pass
+            else:
+                script = "scripts/remotetools/remoteshutdowntimer.sh {} '{}' '{}'".format(rminutes, rmain, rdesc)
+
+                self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+                print(self.cmd)
+                subprocess.call(self.cmd, shell=True)
+
+                msg = "A shutdown timer of {} minute was set for {}.".format(rminutes, remoteip)
+                shutBox = QtWidgets.QMessageBox()
+                shutBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+                shutBox.setWindowTitle("Alert!")
+                shutBox.setText(msg)
+                shutBox.setIcon(QtWidgets.QMessageBox.Warning)
+
+                if shutBox.exec_() == QtWidgets.QMessageBox.Cancel:
+                    self.cmd = "ssh {}@{} -t 'shutdown -c'".format(remoteaccount, remoteip)
+                    subprocess.call(self.cmd, shell=True)
+                else:
+                    pass
+        except:
+            pass
+        
+        self.remoteminutesLine.setText("")
+        self.remotenotifmainLine.setText("")
+        self.remotenotifdescLine.setText("")
+
+    def remoteRunBackup(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+                
+            script = "scripts/remotetools/remotebackup.sh 1"
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            subprocess.call(self.cmd, shell=True)
+                
+            msg = "Backup is currently running on {}".format(remoteip)
+            self.remoteNotif(msg)
+
+        except:
+            pass
+        
+    def remoteExtractBackup(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+                
+            script = "scripts/remotetools/remotebackup.sh 2"
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            subprocess.call(self.cmd, shell=True)
+                
+            msg = "Backup archive on {} is currently being extracted.".format(remoteip)
+            self.remoteNotif(msg)
+
+        except:
+            pass
+
+    def remoteDeleteBackup(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+                
+            script = "scripts/remotetools/remotebackup.sh 3"
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            subprocess.call(self.cmd, shell=True)
+                
+            msg = "Backup archived on {} is being deleted".format(remoteip)
+            self.remoteNotif(msg)
+
+        except:
+            pass
+
+
+    #end remotetool items
 
 
 if __name__ == "__main__":
@@ -1525,6 +2036,8 @@ if __name__ == "__main__":
     ui.sysInfo()
     ui.staticipFrame.hide()
     ui.setdhcpButton.hide()
+    ui.dinterfaceLine.hide()
+    ui.dinterfaceLabel.hide()
     ui.userinfoTextEdit.setPlainText("")
     
     MainWindow.show()

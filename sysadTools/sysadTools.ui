@@ -2829,8 +2829,8 @@ font: 10pt &quot;Latin Modern Sans&quot;;</string>
      </property>
      <property name="font">
       <font>
-       <family>Courier 10 Pitch</family>
-       <pointsize>10</pointsize>
+       <family>Noto Mono</family>
+       <pointsize>5</pointsize>
        <weight>50</weight>
        <italic>false</italic>
        <bold>false</bold>
@@ -2839,10 +2839,27 @@ font: 10pt &quot;Latin Modern Sans&quot;;</string>
      <property name="styleSheet">
       <string notr="true">background-color: rgb(8, 5, 13);
 color: rgb(211, 215, 207);
-font: 10pt &quot;Courier 10 Pitch&quot;;</string>
+font: 5pt &quot;Noto Mono&quot;;</string>
      </property>
      <property name="plainText">
-      <string/>
+      <string>                          ./+o+-       root@paucabral
+                  yyyyy- -yyyyyy+      OS: Ubuntu 18.04 bionic
+               ://+//////-yyyyyyo      Kernel: x86_64 Linux 4.15.0-76-generic
+           .++ .:/++++++/-.+sss/`      Uptime: 45m
+         .:++o:  /++++++++/:--:/-      Packages: 582
+        o:+o+:++.`..```.-/oo+++++/     Shell: bash 4.4.20
+       .:+o:+o/.          `+sssoo+/    CPU: Intel Celeron 2957U @ 1.397GHz
+  .++/+:+oo+o:`             /sssooo.   GPU: svgadrmfb
+ /+++//+:`oo+o               /::--:.   RAM: 120MiB / 1993MiB
+ \+/+o+++`o++o               ++////.  
+  .++.o+++oo+:`             /dddhhh.  
+       .+.o+oo:.          `oddhhhh+   
+        \+.++o+o``-````.:ohdhhhhh+    
+         `:o+++ `ohhhhhhhhyo++os:     
+           .o:`.syhhhhhhh/.oo++o`     
+               /osyyyyyyo++ooo+++/    
+                   ````` +oo+++o\:    
+                          `oo++.      </string>
      </property>
     </widget>
     <widget class="QPushButton" name="searchhostsButton">
@@ -2904,8 +2921,8 @@ color: rgb(255,255,255)</string>
    <zorder>sidebar</zorder>
    <zorder>accountcreationFrame</zorder>
    <zorder>processesFrame</zorder>
-   <zorder>remotetoolsFrame</zorder>
    <zorder>netconfigFrame</zorder>
+   <zorder>remotetoolsFrame</zorder>
    <zorder>dashboardFrame</zorder>
    <zorder>header</zorder>
   </widget>
