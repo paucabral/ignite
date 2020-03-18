@@ -1285,7 +1285,7 @@ class Ui_MainWindow(object):
         self.hostinformationTextEdit.setFont(font)
         self.hostinformationTextEdit.setStyleSheet("background-color: rgb(8, 5, 13);\n"
 "color: rgb(211, 215, 207);\n"
-"font: 10pt \"Courier 10 Pitch\";")
+"font: 5pt \"Noto Mono\";")
         self.hostinformationTextEdit.setPlainText("")
         self.hostinformationTextEdit.setObjectName("hostinformationTextEdit")
         self.searchhostsButton = QtWidgets.QPushButton(self.remotetoolsFrame)
@@ -1411,9 +1411,10 @@ class Ui_MainWindow(object):
         self.searchhostsButton.setText(_translate("MainWindow", "SEARCH"))
 
 #Succedding lines from this point are now manual code. Include all imports from above!
-    #sysinfo and accountcreation read only display
+    #sysinfo, accountcreation, and remotesysinfo read only display
         self.plainTextEdit.setReadOnly(True)
         self.userinfoTextEdit.setReadOnly(True)
+        self.hostinformationTextEdit.setReadOnly(True)
     #Table headers
         self.processTable.setHorizontalHeaderLabels("USER;PID;PPID;ELAPSED;%CPU;ARGS;COMMAND".split(";"))
         self.accountsTable.setHorizontalHeaderLabels("Username;Password;Last Password Change;Minimum;Maximum;Warn;Inactive;Expire".split(";"))
@@ -1899,7 +1900,7 @@ class Ui_MainWindow(object):
         remoteAccount = str(self.remoteaccountLine.text())
         remoteIP = str(self.remoteipaddressLine.text())
 
-        if remoteAccount == "":
+        if remoteAccount == "" or remoteIP == "":
             pass
 
         else:
@@ -1909,6 +1910,14 @@ class Ui_MainWindow(object):
             self.cmd = "./scripts/remotetools/saveip.sh {}".format(remoteIP)
             subprocess.call(self.cmd, shell=True)
             
+            self.cmd = "./scripts/remotetools/remotehostspec.sh {} {}".format(remoteAccount, remoteIP)
+            subprocess.call(self.cmd, shell=True)
+
+            sysfile = "remotehostspec.txt"
+            with open(sysfile, 'rt') as txtfile:
+                systemI = txtfile.read()
+            self.hostinformationTextEdit.setPlainText(systemI)
+
             msg = "SSH settings saved successfully. You may now use the tools below."
             self.remoteNotif(msg)
 
