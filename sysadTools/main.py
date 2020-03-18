@@ -1483,6 +1483,9 @@ class Ui_MainWindow(object):
         self.searchhostsButton.clicked.connect(self.showHosts)
         self.establishsshButton.clicked.connect(self.establishSSH)
         self.remotesetshutdowntimerButton.clicked.connect(self.remoteShutdownTimer)
+        self.remoterunbackupButton.clicked.connect(self.remoteRunBackup)
+        self.remoteextractbackupButton.clicked.connect(self.remoteExtractBackup)
+        self.remotedeletebackupButton.clicked.connect(self.remoteDeleteBackup)
         #end remotetools buttons 
 
     #start sidebar button clicks
@@ -1913,44 +1916,108 @@ class Ui_MainWindow(object):
         self.remoteipaddressLine.setText("")
 
     def remoteShutdownTimer(self):
-        txtfileA = "remoteaccount.txt"
-        with open(txtfileA, 'rt') as txtfileA:
-            remoteaccount = txtfileA.readline().splitlines()[0]
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
         
-        txtfileB = "remoteip.txt"
-        with open(txtfileB, 'rt') as txtfileB:
-            remoteip = txtfileB.readline().splitlines()[0]
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
         
-        rminutes = str(self.remoteminutesLine.text())
-        rmain = str(self.remotenotifmainLine.text())
-        rdesc = str(self.remotenotifdescLine.text())
+            rminutes = str(self.remoteminutesLine.text())
+            rmain = str(self.remotenotifmainLine.text())
+            rdesc = str(self.remotenotifdescLine.text())
         
 
-        if rminutes == "" or rmain == "" or rdesc == "":
-            pass
-        else:
-            script = "scripts/remotetools/remoteshutdowntimer.sh {} '{}' '{}'".format(rminutes, rmain, rdesc)
-
-            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
-            print(self.cmd)
-            subprocess.call(self.cmd, shell=True)
-
-            msg = "A shutdown timer of {} was set for {}.".format(rminutes, remoteip)
-            shutBox = QtWidgets.QMessageBox()
-            shutBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
-            shutBox.setWindowTitle("Alert!")
-            shutBox.setText(msg)
-            shutBox.setIcon(QtWidgets.QMessageBox.Warning)
-
-            if shutBox.exec_() == QtWidgets.QMessageBox.Cancel:
-                self.cmd = "ssh {}@{} -t 'shutdown -c'".format(remoteaccount, remoteip)
-                subprocess.call(self.cmd, shell=True)
-            else:
+            if rminutes == "" or rmain == "" or rdesc == "":
                 pass
+            else:
+                script = "scripts/remotetools/remoteshutdowntimer.sh {} '{}' '{}'".format(rminutes, rmain, rdesc)
+
+                self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+                print(self.cmd)
+                subprocess.call(self.cmd, shell=True)
+
+                msg = "A shutdown timer of {} minute was set for {}.".format(rminutes, remoteip)
+                shutBox = QtWidgets.QMessageBox()
+                shutBox.setStandardButtons(QtWidgets.QMessageBox.Ok | QtWidgets.QMessageBox.Cancel)
+                shutBox.setWindowTitle("Alert!")
+                shutBox.setText(msg)
+                shutBox.setIcon(QtWidgets.QMessageBox.Warning)
+
+                if shutBox.exec_() == QtWidgets.QMessageBox.Cancel:
+                    self.cmd = "ssh {}@{} -t 'shutdown -c'".format(remoteaccount, remoteip)
+                    subprocess.call(self.cmd, shell=True)
+                else:
+                    pass
+        except:
+            pass
         
         self.remoteminutesLine.setText("")
         self.remotenotifmainLine.setText("")
         self.remotenotifdescLine.setText("")
+
+    def remoteRunBackup(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+                
+            script = "scripts/remotetools/remotebackup.sh 1"
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            subprocess.call(self.cmd, shell=True)
+                
+            msg = "Backup is currently running on {}".format(remoteip)
+            self.remoteNotif(msg)
+
+        except:
+            pass
+        
+    def remoteExtractBackup(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+                
+            script = "scripts/remotetools/remotebackup.sh 2"
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            subprocess.call(self.cmd, shell=True)
+                
+            msg = "Backup archive on {} is currently being extracted.".format(remoteip)
+            self.remoteNotif(msg)
+
+        except:
+            pass
+
+    def remoteDeleteBackup(self):
+        try:
+            txtfileA = "remoteaccount.txt"
+            with open(txtfileA, 'rt') as txtfileA:
+                remoteaccount = txtfileA.readline().splitlines()[0]
+        
+            txtfileB = "remoteip.txt"
+            with open(txtfileB, 'rt') as txtfileB:
+                remoteip = txtfileB.readline().splitlines()[0]
+                
+            script = "scripts/remotetools/remotebackup.sh 3"
+            self.cmd = "ssh {}@{} \'bash -s\' < {}".format(remoteaccount, remoteip, script)
+            subprocess.call(self.cmd, shell=True)
+                
+            msg = "Backup archived on {} is being deleted".format(remoteip)
+            self.remoteNotif(msg)
+
+        except:
+            pass
+
     #end remotetool items
 
 
