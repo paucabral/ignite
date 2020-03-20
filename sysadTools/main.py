@@ -1411,6 +1411,8 @@ class Ui_MainWindow(object):
         self.searchhostsButton.setText(_translate("MainWindow", "SEARCH"))
 
 #Succedding lines from this point are now manual code. Include all imports from above!
+    #password mask
+        self.passwordLine.setEchoMode(QtWidgets.QLineEdit.Password)
     #sysinfo, accountcreation, and remotesysinfo read only display
         self.plainTextEdit.setReadOnly(True)
         self.userinfoTextEdit.setReadOnly(True)
